@@ -1,0 +1,25 @@
+ - Instalar Apache:
+    apt update
+    apt install apache2 -y
+
+- Configurar SSH: 
+   
+    En el archivo /etc/ssh/sshd_config cambiamos/activamos:
+    nano /etc/ssh/sshd_config
+        Subsystem sftp internal-sftp
+    
+        Match User pepe
+            Include /etc/ssh/sshd_config.d/*
+    
+    systemctl restart ssh
+
+    MKDIR EL DIR:
+
+        /etc/ssh/sshd_config.d
+
+
+apt install libapache2-mpm-itk
+
+
+apt install mailutils 
+apt install ssmtp
