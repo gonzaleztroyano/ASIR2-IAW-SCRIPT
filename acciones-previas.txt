@@ -20,6 +20,7 @@
 
 apt install libapache2-mpm-itk
 
-
+apt update
+apt install apache2 mailutils ssmtp libapache2-mpm-itk -y 
 apt install mailutils 
 apt install ssmtp

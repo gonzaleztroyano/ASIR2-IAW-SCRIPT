@@ -2,48 +2,30 @@
 
 #!/bin/bash
 
-echo "Venga, colega. ¡Vamos alla!"
-echo ""
-echo "=============================="
-echo "||       Actualizando       ||"
-echo "||   Paquetes disponibles   ||"
-echo "||        desde APT         ||"
-echo "=============================="
+# TODO: Poder crear solo un WP 
+# TODO: Acceso remoto a la base de datos
+# TODO: PHPMyAdmin
 
-apt update
+mysql -e "CREATE DATABASE wp_$usuario_nuevo;"
+mysql -e "CREATE USER '$usuario_nuevo'@localhost IDENTIFIED BY '$password_generada';"
 
-## Instalar Apache y UFW
-sudo apt -y install apache2 ufw
-
-## Permitir Apache
-sudo ufw allow in "Apache Full"
-
-## Paquetes necesarios
-apt install -y php libapache2-mod-php php-mysql php-cli mariadb-server mariadb-client php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
-
-## Recargar apache
-sudo systemctl restart apache2
-
-######## MARIADB ###########
-mysql -u root -p
-
-CREATE DATABASE miprimerwp;
-CREATE USER 'pepi'@localhost IDENTIFIED BY 'usuario';
-GRANT ALL ON miprimerwp.* TO 'pepi'@'localhost' IDENTIFIED BY 'usuario';
+mysql -e "GRANT ALL ON wp_$usuario_nuevo.* TO '$usuario_nuevo'@'localhost' IDENTIFIED BY '$password_generada';"
  
-;
 
-echo -e "<VirtualHost *:80> \n ServerAdmin webmaster@localhost \n ServerName wp.iaw.com \n DocumentRoot /var/www/wordpress/ \n ErrorLog /var/log/apache2/wp.iaw.com \n CustomLog /var/log/c-wp.iaw.com combined \n </VirtualHost> \n" > /etc/apache2/sites-available/wp.conf
+echo -e "<VirtualHost *:80> \n ServerAdmin $usuario_nuevo@localhost \n ServerName blog.$usuario_nuevo.iaw.com \n DocumentRoot /var/www/$usuario_nuevo/blog \n ErrorLog /var/www/$usuario_nuevo/ficheros/logs/blog.$usuario_nuevo.iaw.com \n CustomLog //var/www/$usuario_nuevo/ficheros/logs/blog.$usuario_nuevo.iaw.com-access combined \n </VirtualHost> \n" > /etc/apache2/sites-available/wp_$usuario_nuevo.conf
 
-a2enmod rewrite
-a2ensite wp.conf
+# a2enmod rewrite
+a2ensite wp_$usuario_nuevo.conf
 sudo systemctl restart apache2
 
-wget https://wordpress.org/latest.tar.gz
+curl https://wordpress.org/latest.tar.gz --output /tmp/latest.tar.gz
 
-tar xvzf latest.tar.gz
+mkdir /tmp/wordpress
+tar xvzf /tmp/latest.tar.gz -C /tmp/wordpress
 
-mv wordpress/ /var/www/wordpress
-chmod -R 770 /var/www/wordpress
+mv /tmp/wordpress/* /var/www/$usuario_nuevo/blog/
+chmod -R 770 /var/www/$usuario_nuevo/blog
 
-chown -R www-data:www-data /var/www/wordpress
+chown -R www-data:www-data /var/www/$usuario_nuevo/blog
+
+rmdir -F /tmp/wordpress
