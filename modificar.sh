@@ -15,12 +15,14 @@ function modificar(){
     
     # Comprobar si el usuario existe
 
-        if [[ "cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1 | grep -w $usuario_a_modificar " != $usuario_a_modificar]]; then
+        check_usuario_existe='cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1 | grep -w $usuario_a_modificar'
+
+        if [[ $check_usuario_existe != $usuario_a_modificar ]]; then
 
             echo "El usuario indicado no existe" 
             return [n]
         else
-        fi
+        
     # Si existe, actuar:
         # Pedir contraseña nueva, dos veces por seguridad
             read -p -s "Introduce una nueva contraseña para el usuario $usuario_a_modificar: " password_nueva_1
@@ -36,4 +38,5 @@ function modificar(){
                 echo "\e[5mERROR \e[0m: las contraseñas no coinciden"
                 return [n]
             fi
+        fi
 }   

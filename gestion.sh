@@ -8,5 +8,6 @@ source crear_wp.sh
 source envio_email.sh
 source menu.sh
 source modificar.sh
+source listar.sh
 
 menu
