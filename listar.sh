@@ -1,12 +1,10 @@
-#!/bin/bash
-
 function listar() {
 
     salir=0
 
     while [ $salir != 1 ]
     do
-        read -ñ "¿Desea buscar algún nombre de usuario en concreto? [s/n]: " buscar_usuario_filtro
+        read -p "¿Desea buscar algún nombre de usuario en concreto? [s/n]: " buscar_usuario_filtro
 
         if [ $buscar_usuario_filtro = "s" ]; then
 

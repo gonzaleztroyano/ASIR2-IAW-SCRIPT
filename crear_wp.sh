@@ -1,9 +1,10 @@
 function crear_wp(){
-#!/bin/bash
     # Notas del fichero
+        # VARS: Recibe $usuario_nuevo ($1) y $password_generada ($2) 
         # TODO: Poder crear solo un WP 
         # TODO: Acceso remoto a la base de datos
         # TODO: PHPMyAdmin
+        # CHECK: chown de los datos de WP. ¿www-data o user?
 
     # Crear usuario, base de datos, permisos
         mysql -e "CREATE DATABASE wp_$1;"

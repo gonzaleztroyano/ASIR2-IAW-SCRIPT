@@ -12,7 +12,7 @@ function menu() {
         if [[ $seleccionada = 1 ]]; then
             listar
         elif [[ $seleccionada = 2 ]]; then
-            crear_apache
+            crear_usuario
         elif [[ $seleccionada = 3 ]]; then
             borrar
         elif [[ $seleccionada = 4 ]]; then

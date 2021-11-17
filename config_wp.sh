@@ -14,6 +14,5 @@ config-wp(){
             sed -i "s/database_name_here/$db_name/g" "/var/www/$1/blog/wp-config.php"
             sed -i "s/username_here/$1/g" "/var/www/$1/blog/wp-config.php"
             sed -i "s/username_here/$1/g" "/var/www/$1/blog/wp-config.php"
-
             
 }

@@ -8,25 +8,21 @@ function crear_usuario(){
     # Si no es correcto, salgo. Si existe, salgo
         if [[ $crear_apache_correct_user = "n" ]]; then
             echo -e "¡Recibido! \n Volviendo al menú. " 
-            menu
+            return [n]
         fi
 
         egrep "^$crear_apache_correct_user" /etc/passwd >/dev/null
         if [ $? -eq 0 ]; then
             echo "$crear_apache_correct_user exists!"
-            exit
+            echo ""
+            read -p "pulse cualquier tecla para continuar" caca
+            return [n]
         fi
     # Crear carpetas
         echo -e "Creando usuario:  \e[1m$usuario_nuevo\e[0m"
         mkdir -p /var/www/$usuario_nuevo/ficheros/logs
         mkdir /var/www/$usuario_nuevo/web
         mkdir /var/www/$usuario_nuevo/blog
-
-    # Modificar permisos y ownership
-        chmod 755 /var/www/$usuario_nuevo/
-        chown -R $usuario_nuevo:$usuario_nuevo /var/www/$usuario_nuevo/
-        chown root:root /var/www/$usuario_nuevo/
-        chmod -R 770 /var/www/$usuario_nuevo/*
 
 
     # Genero las contraseñas y añado el usuario. Muestro la contraseña
@@ -44,6 +40,15 @@ function crear_usuario(){
         echo "||                                ||"
         echo "||                                ||"
         echo "===================================="
+
+    # Modificar permisos y ownership
+        chmod 755 /var/www/$usuario_nuevo/
+        chown -R $usuario_nuevo:$usuario_nuevo /var/www/$usuario_nuevo/
+        chown root:root /var/www/$usuario_nuevo/
+        chmod -R 770 /var/www/$usuario_nuevo/*
+
+
+    
 
 
     # Pausa de confirmación
