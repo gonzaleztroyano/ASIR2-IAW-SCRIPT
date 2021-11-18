@@ -23,5 +23,5 @@ function listar () {
             echo "Opción no válida. Inténtelo de nuevo."
         fi
     done
-    return [n]
+    return 0
 }

@@ -1,0 +1,8 @@
+<VirtualHost *:80>
+    ServerName USER-TO-CHANGE.iaw.com
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/USER-TO-CHANGE/web
+    ErrorLog /var/www/USER-TO-CHANGE/ficheros/logs/USER-TO-CHANGE-error.log
+    CustomLog /var/www/USER-TO-CHANGE/ficheros/logs/USER-TO-CHANGE-access.log combined
+    AssignUserID USER-TO-CHANGE USER-TO-CHANGE
+</VirtualHost>

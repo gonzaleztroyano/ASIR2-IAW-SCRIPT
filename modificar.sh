@@ -20,7 +20,7 @@ function modificar(){
         if [[ $check_usuario_existe != $usuario_a_modificar ]]; then
 
             echo "El usuario indicado no existe" 
-            return [n]
+            return 1
         else
         
     # Si existe, actuar:
@@ -36,7 +36,7 @@ function modificar(){
                     return [n]
             else
                 echo "\e[5mERROR \e[0m: las contraseñas no coinciden"
-                return [n]
+                return 0
             fi
         fi
 }   

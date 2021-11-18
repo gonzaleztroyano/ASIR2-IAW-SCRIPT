@@ -8,12 +8,11 @@ function crear_apache() {
         
     # Añadir página html para el sitio
         printf "Bienvenido al sitio del usuario $1" > /var/www/$1/web/index.html
-
-        #TODO: COMPROBAR si dentro del sed se pueden usar variables.
+    
+    #Activar el sitio
         a2ensite $1.conf
         systemctl reload apache2
 
     # Configuración ChrootDirectory
         printf "ChrootDirectory /var/www/$1" >> /etc/ssh/sshd_config.d/$1.conf
-
 }

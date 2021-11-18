@@ -17,7 +17,7 @@ function crear_usuario(){
     # Si no es correcto, salgo. Si existe, salgo
         if [[ $crear_apache_correct_user = "n" ]]; then
             echo -e "¡Recibido! \n Volviendo al menú. " 
-            return [0]
+            return 0
         fi
 
         egrep "^$usuario_nuevo" /etc/passwd >/dev/null
@@ -25,7 +25,7 @@ function crear_usuario(){
             echo "$crear_apache_correct_user exists!"
             echo ""
             read -p "pulse cualquier tecla para continuar" caca
-            return [1]
+            return 1
         fi
     # Crear carpetas
         echo -e "Creando usuario:  \e[1m$usuario_nuevo\e[0m"
@@ -33,9 +33,9 @@ function crear_usuario(){
 
     # Genero las contraseñas y añado el usuario. Muestro la contraseña
         password_generada=$(openssl rand -base64 12)
-        password_hasheada=$(perl -e'print crypt($password_generada, "aa")')
 
-        useradd -M --home /var/www/$usuario_nuevo --shell /bin/bash -p $password_hasheada $usuario_nuevo
+        useradd -M --home /var/www/$usuario_nuevo --shell /bin/bash  $usuario_nuevo
+        printf "$usuario_nuevo:$password_generada" | chpasswd
 
         echo "Usuario " + $usuario_nuevo + " creado"
         echo "===============ANOTE================"
@@ -64,5 +64,4 @@ function crear_usuario(){
 
         read -p "Indique el correo electrónico del cliente: " correo_cliente
         envio_email $usuario_nuevo $password_generada $correo_cliente
-
 }

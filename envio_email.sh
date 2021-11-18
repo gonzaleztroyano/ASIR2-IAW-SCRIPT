@@ -4,17 +4,28 @@ function envio_email() {
         # VARS: $usuario_nuevo ($1)
         # VARS: $password_generada ($2)
         # VARS: $correo_cliente ($3)
+        # VARS: $PASS, leída desde bashrc 
+        # VARS: $USERSIB, leía desde bashrc
 
     # Actualización datos SMTP
         # Preguntar y actuar
+
+            # Variable para gestión de secretos 
+            PASS="${BASHPASSFROMRC}"
+            USERSIB="${BASHUSERSIBFROMRC}"
+            
+                
+                #En el archivpo ~/.bashrc añadimos:
+                    # BASHPASSFROMRC="%AQUÍ_VA_LA_CONTRASEÑA%"
+                    # BASHUSERSIBFROMRC="%AQUÍ_VA_EL_USUARIO%"
             read -p "¿Desea actualizar los datos SMTP [s/N]?"   
             
             if [ $buscar_usuario_filtro = "s" ]; then
                  printf "root=postmaster
                     mailhub=smtp-relay.sendinblue.com:587
                     hostname=server.glez.tk
-                    AuthUser=sendinblue@glez.tk
-                    AuthPass=xsmtpsib-ed27e85602d3a23556a2dbe0b9e8aee899eeb99db1b3a5e677967080eba378a5-0ZNDpHB1g4bOxtk3
+                    AuthUser=$USERSIB
+                    AuthPass=$PASS
                     FromLineOverride=YES
                     UseSTARTTLS=YES" > /etc/ssmtp/ssmtp.conf
             fi
