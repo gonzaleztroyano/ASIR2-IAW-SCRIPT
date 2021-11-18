@@ -48,7 +48,7 @@ function envio_email() {
         Blog: blog.$1.iaw.com
 
         
-    "  | mail -s "BIENVENIDX" $3
+    "  | mail -s "BIENVENIDX" $3    
 
 
 }

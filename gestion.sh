@@ -10,4 +10,9 @@ source menu.sh
 source modificar.sh
 source listar.sh
 
+if [ "$EUID" -ne 0 ]
+  then echo "Este script de gestión solo puede ser ejecutado por el usuario root"
+  exit
+fi
+
 menu

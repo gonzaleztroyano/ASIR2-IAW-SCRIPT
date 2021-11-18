@@ -16,16 +16,16 @@ borrar(){
     # Pedir usuario a modificar
         read -p "¿Qué usuario desea borrar? " usuario_a_borrar
 
-    # Comprobar si el usuario existe
-        check_usuario_existe='cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1 | grep -w $usuario_a_modificar'
-
-        if [[ $check_usuario_existe != $usuario_a_modificar ]]; then
-
-    # Si el usuario NO existe, error y volver
-            echo "El usuario indicado no existe" 
-            read -p "Pulse cualquier tecla para volver al menú inicial " caca
-            return 1
-        else
+#    # Comprobar si el usuario existe
+#        check_usuario_existe='cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w $usuario_a_modificar'
+#
+#        if [[ $check_usuario_existe != "$usuario_a_modificar" ]]; then
+#
+#    # Si el usuario NO existe, error y volver
+#            echo "El usuario indicado no existe" 
+#            read -p "Pulse cualquier tecla para volver al menú inicial " caca
+#            return 1
+#        else
     
     # Si el usuario SÍ existe, proceder:
 
@@ -51,5 +51,6 @@ borrar(){
             read -p "Pulse intro para volver al menú" caca
 
         return 0
+#    fi
 }
 

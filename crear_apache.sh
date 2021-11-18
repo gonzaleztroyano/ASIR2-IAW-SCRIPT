@@ -7,6 +7,7 @@ function crear_apache() {
         sed -i "s/USER-TO-CHANGE/$1/g" "/etc/apache2/sites-available/$1.conf"
         
     # Añadir página html para el sitio
+        touch /var/www/$1/web/index.html
         printf "Bienvenido al sitio del usuario $1" > /var/www/$1/web/index.html
     
     #Activar el sitio

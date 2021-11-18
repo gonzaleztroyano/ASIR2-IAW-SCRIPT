@@ -29,15 +29,15 @@ function crear_usuario(){
         fi
     # Crear carpetas
         echo -e "Creando usuario:  \e[1m$usuario_nuevo\e[0m"
-        mkdir -p /var/www/$usuario_nuevo/ficheros/{logs,blog,web}
-
+        mkdir -p /var/www/$usuario_nuevo/{blog,web,ficheros}
+        mkdir -p /var/www/$usuario_nuevo/ficheros/logs
     # Genero las contraseñas y añado el usuario. Muestro la contraseña
         password_generada=$(openssl rand -base64 12)
 
         useradd -M --home /var/www/$usuario_nuevo --shell /bin/bash  $usuario_nuevo
         printf "$usuario_nuevo:$password_generada" | chpasswd
 
-        echo "Usuario " + $usuario_nuevo + " creado"
+        echo "Usuario " $usuario_nuevo " creado"
         echo "===============ANOTE================"
         echo "||         LA CONTRASEÑA          ||"
         echo "||                                ||"
