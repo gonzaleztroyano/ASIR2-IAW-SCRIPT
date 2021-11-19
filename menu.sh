@@ -30,8 +30,10 @@ EOF
             elif [[ $seleccionada = 4 ]]; then
                 modificar
             elif [[ $seleccionada = 5 ]]; then
+                echo ""
                 exit
             else
                 echo "Opción no válida"
+                menu
         fi
 }
