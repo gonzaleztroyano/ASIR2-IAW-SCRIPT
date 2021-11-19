@@ -11,7 +11,7 @@ function crear_apache() {
         printf "Bienvenido al sitio del usuario $1" > /var/www/$1/web/index.html
     
     #Activar el sitio
-        a2ensite $1.conf
+        a2ensite $1.conf >> /dev/null
         systemctl reload apache2
 
     # Configuración ChrootDirectory

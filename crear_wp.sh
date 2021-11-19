@@ -14,10 +14,10 @@ function crear_wp(){
     
     # Crear Virtualhost y activar sitio
 
-        echo -e "<VirtualHost *:80> \n ServerAdmin $1@localhost \n ServerName blog.$1.iaw.com \n DocumentRoot /var/www/$1/blog \n ErrorLog /var/www/$1/ficheros/logs/blog.$1.iaw.com \n CustomLog //var/www/$1/ficheros/logs/blog.$1.iaw.com-access combined \n </VirtualHost> \n" > /etc/apache2/sites-available/wp_$1.conf
+        echo -e "<VirtualHost *:80> \n   ServerAdmin $1@localhost \n   ServerName blog.$1.iaw.com \n   DocumentRoot /var/www/$1/blog \n   ErrorLog /var/www/$1/ficheros/logs/blog.$1.iaw.com \n   CustomLog /var/www/$1/ficheros/logs/blog.$1.iaw.com-access combined \n   AssignUserID $1 $1  \n</VirtualHost> \n" > /etc/apache2/sites-available/wp_$1.conf
         
         # a2enmod rewrite
-        a2ensite wp_$1.conf
+        a2ensite wp_$1.conf >> /dev/null
         sudo systemctl restart apache2
 
     # Descargar WP y extraer a tmp
@@ -28,7 +28,7 @@ function crear_wp(){
     # Mover archivos y configurar permisos. Limiar temporales
         mv /tmp/wordpress/wordpress/* /var/www/$1/blog/
         chmod -R 770 /var/www/$1/blog
-        chown -R www-data:www-data /var/www/$1/blog
+        chown -R $1:$1 /var/www/$1/blog
         rm -Rf /tmp/wordpress
         rm /tmp/latest.tar.gz
 }

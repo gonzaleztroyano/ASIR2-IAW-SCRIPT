@@ -18,17 +18,17 @@ function envio_email() {
                 #En el archivpo ~/.bashrc añadimos:
                     # BASHPASSFROMRC="%AQUÍ_VA_LA_CONTRASEÑA%"
                     # BASHUSERSIBFROMRC="%AQUÍ_VA_EL_USUARIO%"
-            read -p "¿Desea actualizar los datos SMTP [s/N]?"   
+#            read -p "¿Desea actualizar los datos SMTP [s/N]?" buscar_usuario_filtro
             
-            if [ $buscar_usuario_filtro = "s" ]; then
-                 printf "root=postmaster
-                    mailhub=smtp-relay.sendinblue.com:587
-                    hostname=server.glez.tk
-                    AuthUser=$USERSIB
-                    AuthPass=$PASS
-                    FromLineOverride=YES
-                    UseSTARTTLS=YES" > /etc/ssmtp/ssmtp.conf
-            fi
+#           if [ $buscar_usuario_filtro = "s" ]; then
+#                 printf "root=postmaster
+#                    mailhub=smtp-relay.sendinblue.com:587
+#                    hostname=server.glez.tk
+#                    AuthUser=$BASHUSERSIBFROMRC
+#                    AuthPass=$BASHPASSFROMRC
+#                    FromLineOverride=YES
+#                    UseSTARTTLS=YES" > /etc/ssmtp/ssmtp.conf
+#            fi
 
    
 
@@ -46,11 +46,9 @@ function envio_email() {
 
         Página web: $1.iaw.com
         Blog: blog.$1.iaw.com
-
         
     "  | mail -s "BIENVENIDX" $3    
-
-
 }
 
 #sudo dpkg-reconfigure postfix
+#https://www.linuxhowto.net/how-to-set-up-postfix-smtp-relay-on-ubuntu-with-sendinblue/

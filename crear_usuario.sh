@@ -1,12 +1,3 @@
-#source borrar.sh
-#source config_wp.sh
-#source crear_apache.sh
-#source crear_wp.sh
-#source envio_email.sh
-#source menu.sh
-#source modificar.sh
-#source listar.sh
-
 function crear_usuario(){
     # Pido nombre de usuario. Paso a minúsculas. Reconfirmo
         read -p "Introduce el usuario a crear: " usuario_nuevo
@@ -34,7 +25,7 @@ function crear_usuario(){
     # Genero las contraseñas y añado el usuario. Muestro la contraseña
         password_generada=$(openssl rand -base64 12)
 
-        useradd -M --home /var/www/$usuario_nuevo --shell /bin/bash  $usuario_nuevo
+        useradd -M -U --home /var/www/$usuario_nuevo --shell /bin/bash  $usuario_nuevo
         printf "$usuario_nuevo:$password_generada" | chpasswd
 
         echo "Usuario " $usuario_nuevo " creado"
@@ -42,7 +33,7 @@ function crear_usuario(){
         echo "||         LA CONTRASEÑA          ||"
         echo "||                                ||"
         echo "||                                ||"
-        echo "||  $password_generada              ||"
+        echo "||      $password_generada          ||"
         echo "||                                ||"
         echo "||                                ||"
         echo "===================================="
@@ -55,7 +46,7 @@ function crear_usuario(){
 
 
     # Pausa de confirmación
-        read -p "Pulse cualquier tecla para continuar" caca 
+        read -p "Pulse cualquier tecla para continuar " caca 
     
     # Llamar a funciones extrañas
         crear_apache $usuario_nuevo

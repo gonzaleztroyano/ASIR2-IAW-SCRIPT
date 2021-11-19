@@ -4,6 +4,7 @@ function listar () {
 
     while [ $salir != 1 ]
     do
+        echo ""
         read -p "¿Desea buscar algún nombre de usuario en concreto? [s/n]: " buscar_usuario_filtro
 
         if [ $buscar_usuario_filtro =    "s" ]; then
@@ -23,5 +24,7 @@ function listar () {
             echo "Opción no válida. Inténtelo de nuevo."
         fi
     done
-    return 0
+    read -p "Pulse cualquier tecla para volver al menú." caca
+
+    menu
 }

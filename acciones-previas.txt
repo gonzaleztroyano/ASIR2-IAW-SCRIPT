@@ -22,5 +22,7 @@ apt install libapache2-mpm-itk
 
 apt update
 apt install apache2 mailutils ssmtp libapache2-mpm-itk -y 
-apt install mailutils 
-apt install ssmtp
+apt install mailutils ssmtp
+
+Para WP:
+    apt install -y php libapache2-mod-php php-mysql php-cli mariadb-server mariadb-client php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php7.2-cgi php7.2-fpm mariadb-server-10.1
