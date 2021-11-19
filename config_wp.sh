@@ -1,4 +1,4 @@
-config_wp(){
+function config_wp(){
     # Definición de variables
         db_name=wp_$1
         db_user=$1

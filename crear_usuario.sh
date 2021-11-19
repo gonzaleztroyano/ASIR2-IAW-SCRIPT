@@ -55,4 +55,9 @@ function crear_usuario(){
 
         read -p "Indique el correo electrónico del cliente: " correo_cliente
         envio_email $usuario_nuevo $password_generada $correo_cliente
+
+    # Confirmación y menú
+        echo "El usuario $usuario_nuevo se ha creado correctamente. "
+        read -rsp "Pulse cualquier tecla para continuar  " -n 1
+        menu
 }

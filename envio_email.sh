@@ -11,8 +11,8 @@ function envio_email() {
         # Preguntar y actuar
 
             # Variable para gestión de secretos 
-            PASS="${BASHPASSFROMRC}"
-            USERSIB="${BASHUSERSIBFROMRC}"
+#            PASS="${BASHPASSFROMRC}"
+#            USERSIB="${BASHUSERSIBFROMRC}"
             
                 
                 #En el archivpo ~/.bashrc añadimos:
