@@ -24,7 +24,7 @@ function borrar (){
     # Si el usuario NO existe, error y volver
             echo "El usuario indicado no existe" 
             read -p "Pulse cualquier tecla para volver al menú inicial " caca
-            return 1
+            menu
         else
     
     # Si el usuario SÍ existe, proceder:
@@ -49,7 +49,8 @@ function borrar (){
             echo "$usuario_a_borrar, sus sitios y accesos hasn sido deshabilitados correctamente"
             echo "$usuario_a_borrar y sus sitios han sido programados para eliminación en 30 días."
             read -p "Pulse intro para volver al menú" caca
-        return 0
+        menu
     fi
+
 }
 

@@ -39,4 +39,5 @@ function modificar(){
                 menu
             fi
         fi
+    menu
 }   
