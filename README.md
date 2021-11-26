@@ -41,7 +41,7 @@ Este repositorio contendrá el código de los scripts y funciones de la utilidad
 
 ### Licencia
 
-Esta obra se publica bajo la licenca Creative Commons BY 2.5 ES.
+Esta obra se publica bajo la licenca Creative Commons BY 4.0 International.
 
 Autor y año de publicación: Pablo González, 2021.
 
