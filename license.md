@@ -1,7 +1,7 @@
-# Reconocimiento 2.5 España (CC BY 2.5 ES)
+# Atribución 4.0 Internacional (CC BY 4.0)
 
-## Esta obra se publica bajo la licenca Creative Commons BY 2.5 ES. 
+## Esta obra se publica bajo la licenca Creative Commons BY 4.0 Internacional. 
 
 Para obtener más información sobre las características de esta licencia puede utilizar los siguientes enlaces:
- * [CC BY 2.5 EN](https://creativecommons.org/licenses/by/2.5/legalcode) (Englsh version)
- * [CC BY 2.5 ES](https://creativecommons.org/licenses/by/2.5/es/legalcode.es) (versión en castellamo)
+ * Summary of [CC BY 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.en) as well as the [legal code](https://creativecommons.org/licenses/by/4.0/legalcode) (English version).
+ * Resumen de [CC BY 4.0 Internacional](https://creativecommons.org/licenses/by/4.0/deed.en) así como el [código legal](https://creativecommons.org/licenses/by/4.0/legalcode.es) (versión en castellano).
