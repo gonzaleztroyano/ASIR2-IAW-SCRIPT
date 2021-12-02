@@ -1,4 +1,4 @@
-function listar () {
+function listar() {
 
     salir=0
 
