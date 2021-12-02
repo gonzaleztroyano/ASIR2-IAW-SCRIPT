@@ -8,8 +8,7 @@ function crear_usuario(){
     # Si no es correcto, salgo. Si existe, salgo
         if [[ $crear_apache_correct_user = "n" ]]; then
             echo -e "¡Recibido! \n Volviendo al menú. " 
-            return 1
-            
+            menu
         fi
 
         egrep "^$usuario_nuevo" /etc/passwd >/dev/null
@@ -17,7 +16,7 @@ function crear_usuario(){
             echo "$crear_apache_correct_user exists!"
             echo ""
             read -p "pulse cualquier tecla para continuar" caca
-            return 1
+            menu
         fi
     # Crear carpetas
         echo -e "Creando usuario:  \e[1m$usuario_nuevo\e[0m"
@@ -54,7 +53,15 @@ function crear_usuario(){
         crear_wp $usuario_nuevo $password_generada
         config_wp $usuario_nuevo $password_generada
 
+        # Hasta que no se introduzca un email correcto, no se continúa con la ejecución.
         read -p "Indique el correo electrónico del cliente: " correo_cliente
+        mail_regex="^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,5}$"
+        until [[ $correo_cliente =~ $mail_regex ]];
+        do
+            echo -e "\e[5mERROR\e[0m: correo no válido.\n"
+            read -p "Indique el correo electrónico del cliente: " correo_cliente
+        done
+
         envio_email $usuario_nuevo $password_generada $correo_cliente
 
     # Confirmación y menú
