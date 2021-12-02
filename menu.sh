@@ -12,7 +12,7 @@ cat << "EOF"
    ____) | |____| | \ \ _| |_| |      | |    | |__| | |____  | |__| | |____ ____) |  | |   _| || |__| | |\  | 
   |_____/ \_____|_|  \_\_____|_|      |_|    |_____/|______|  \_____|______|_____/   |_|  |_____\____/|_| \_| 
                                                                                                              
-                                      CC BY 2.5 Pablo González
+                                CC BY 4.0 Internacional Pablo González
                         https://github.com/gonzaleztroyano/ASIR2-IAW-SCRIPT                                                                                
 
                                    
@@ -25,6 +25,8 @@ EOF
         echo "  3. Borrar usuarias"
         echo "  4. Modificar usuarios"
         echo "  5. Salir del programa"
+        echo ""
+        echo "  6. Configuración de secretos"
         echo ""
         read -p "     Opción seleccionada: " seleccionada
 
@@ -39,6 +41,8 @@ EOF
             elif [[ $seleccionada = 5 ]]; then
                 echo ""
                 exit
+            elif [[ $seleccionada = 6 ]]; then
+                secrets
             else
                 echo "Opción no válida"
                 menu

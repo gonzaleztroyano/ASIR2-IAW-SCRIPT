@@ -29,7 +29,7 @@ Este repositorio contendrá el código de los scripts y funciones de la utilidad
  chmod u+x *.sh
  ```
 
- 3. Configurar datos SMTP, siguiendo como ejemplo [esta guía](https://www.linuxhowto.net/how-to-set-up-postfix-smtp-relay-on-ubuntu-with-sendinblue/).
+ 3. Conseguir las claves de API e información relativa. 
 
  4. Ejecutar el script inicial, que irá llamando al resto de funciones
 
@@ -37,11 +37,16 @@ Este repositorio contendrá el código de los scripts y funciones de la utilidad
  ./gestion.sh
  ```
 
+ 5. Si es la primera vez que lo ejecutas:
+
+  * Deberás instalar las aplicaciones y módulos necesarios. Así como configurar los servicios. (Script de automatización en proceso). 
+  * Deberás ejecutar la opción de configuración de secretos dentro del menú.
+
 
 
 ### Licencia
+Esta obra se publica bajo la licenca Creative Commons BY 4.0 ES.
 
-Esta obra se publica bajo la licenca Creative Commons BY 4.0 International.
 
 Autor y año de publicación: Pablo González, 2021.
 

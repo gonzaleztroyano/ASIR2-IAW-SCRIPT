@@ -8,7 +8,8 @@ function crear_usuario(){
     # Si no es correcto, salgo. Si existe, salgo
         if [[ $crear_apache_correct_user = "n" ]]; then
             echo -e "¡Recibido! \n Volviendo al menú. " 
-            return 0
+            return 1
+            
         fi
 
         egrep "^$usuario_nuevo" /etc/passwd >/dev/null
@@ -39,7 +40,7 @@ function crear_usuario(){
         echo "===================================="
 
     # Modificar permisos y ownership
-        chmod 755 /var/www/$usuario_nuevo/
+        chmod 751 /var/www/$usuario_nuevo/
         chown -R $usuario_nuevo:$usuario_nuevo /var/www/$usuario_nuevo/
         chown root:root /var/www/$usuario_nuevo/
         chmod -R 770 /var/www/$usuario_nuevo/*
