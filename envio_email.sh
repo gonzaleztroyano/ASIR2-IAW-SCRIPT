@@ -3,22 +3,26 @@ function envio_email() {
         # VARS: $usuario_nuevo ($1)
         # VARS: $password_generada ($2)
         # VARS: $correo_cliente ($3)
-        # VARS: $PASS, leída desde bashrc - DEPRECATED
-        # VARS: $USERSIB, leía desde bashrc - DEPRECATED
-    printf "\n
-        ESTIMADO CLIENTE: \n
-        \n
-        Gracias por confiar en nosotros para su almacenamiento premium.
 
-        A continuación le detallamos sus detalles de acceso:
-
-        Usuario: $1
-        Contraseña: $2
-
-        Sus dominios son los siguientes:
-
-        Página web: $1.iaw.com
-        Blog: blog.$1.iaw.com
-        
-    "  | mail -s "BIENVENIDX" $3    
+curl --request POST \
+     --url https://api.sendinblue.com/v3/smtp/email \
+     --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' \
+     --header "api-key: "$global_sib_api_key"" \
+     --data '
+{
+     "to": [
+          {
+               "email": "'"$3"'"
+          }
+     ],
+     "params": {
+          "SUBS_USERNAME": "'"$1"'",
+          "SUBS_PASSWORD": "'"$2"'",
+          "SUBS_HOST": "'"$1"'",
+          "SUBS_BASE_DOMAIN": "'"$base_domain"'"
+     },
+     "templateId": 1
+}
+' 
 }
