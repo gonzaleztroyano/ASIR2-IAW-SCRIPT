@@ -11,7 +11,7 @@ function crear_wp(){
         mysql -e "CREATE DATABASE wp_$1;"
         mysql -e "CREATE USER '$1'@localhost IDENTIFIED BY '$2';"
 
-        mysql -e "GRANT ALL ON wp_$1.* TO '$1'@'localhost' IDENTIFIED BY '$2';"
+        mysql -e "GRANT ALL PRIVILEGES ON wp_$1.* TO '$1'@'localhost';"
     
     # Crear Virtualhost y activar sitio
 
