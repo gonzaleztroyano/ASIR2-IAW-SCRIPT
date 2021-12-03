@@ -52,6 +52,7 @@ function crear_usuario(){
         crear_apache $usuario_nuevo
         crear_wp $usuario_nuevo $password_generada
         config_wp $usuario_nuevo $password_generada
+        cf_updater $usuario_nuevo
 
         # Hasta que no se introduzca un email correcto, no se continúa con la ejecución.
         read -p "Indique el correo electrónico del cliente: " correo_cliente
