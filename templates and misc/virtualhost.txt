@@ -1,5 +1,5 @@
 <VirtualHost *:80>
-    ServerName USER-TO-CHANGE.$global_base_domain
+    ServerName USER-TO-CHANGE.GLOBAL-BASE-DOMAIN
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/USER-TO-CHANGE/web
     ErrorLog /var/www/USER-TO-CHANGE/ficheros/logs/USER-TO-CHANGE-error.log

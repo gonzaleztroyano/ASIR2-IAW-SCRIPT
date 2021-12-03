@@ -5,6 +5,8 @@ function crear_apache() {
     # Creación del sitio de Apache
         wget -qO /etc/apache2/sites-available/$1.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/templates%20and%20misc/virtualhost.txt
         sed -i "s/USER-TO-CHANGE/$1/g" "/etc/apache2/sites-available/$1.conf"
+        sed -i "s/GLOBAL-BASE-DOMAIN/$global_base_domain/g" "/etc/apache2/sites-available/$1.conf"
+        
         
     # Añadir página html para el sitio
         touch /var/www/$1/web/index.html
@@ -15,5 +17,5 @@ function crear_apache() {
         systemctl reload apache2
 
     # Configuración ChrootDirectory
-        printf "ChrootDirectory /var/www/$1" >> /etc/ssh/sshd_config.d/$1.conf
+
 }
