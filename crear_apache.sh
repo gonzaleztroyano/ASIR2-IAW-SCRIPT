@@ -3,7 +3,7 @@ function crear_apache() {
         # VARS: Recibe $usuario_nuevo ($1)
 
     # Creación del sitio de Apache
-        wget -qO /etc/apache2/sites-available/$1.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-DOCS/main/misc/virtualhost.txt
+        wget -qO /etc/apache2/sites-available/$1.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/templates%20and%20misc/virtualhost.txt
         sed -i "s/USER-TO-CHANGE/$1/g" "/etc/apache2/sites-available/$1.conf"
         
     # Añadir página html para el sitio

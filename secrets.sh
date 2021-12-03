@@ -14,11 +14,11 @@ function secrets() {
     read -rp "Introduce el token API de SendInBlue: " sib_api_key
 
     {
-    echo "base_domain=$base_domain"
-    echo "cf_email=$cf_email"
-    echo "cf_zone=$cf_zone"
-    echo "cf_token=$cf_token"
-    echo "sib_api_key=$sib_api_key"
+    echo "global_base_domain=$base_domain"
+    echo "global_cf_email=$cf_email"
+    echo "global_cf_zone=$cf_zone"
+    echo "global_cf_token=$cf_token"
+    echo "global_sib_api_key=$sib_api_key"
     } >> ~/.bashrc
 
     echo -e "\n \n Se han guardado los secretos. "
