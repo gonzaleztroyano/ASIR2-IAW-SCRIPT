@@ -3,8 +3,10 @@ function crear_apache() {
         # VARS: Recibe $usuario_nuevo ($1)
 
     # Creación del sitio de Apache
-        wget -qO /etc/apache2/sites-available/$1.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-DOCS/main/misc/virtualhost.txt
+        wget -qO /etc/apache2/sites-available/$1.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/templates%20and%20misc/virtualhost.txt
         sed -i "s/USER-TO-CHANGE/$1/g" "/etc/apache2/sites-available/$1.conf"
+        sed -i "s/GLOBAL-BASE-DOMAIN/$global_base_domain/g" "/etc/apache2/sites-available/$1.conf"
+        
         
     # Añadir página html para el sitio
         touch /var/www/$1/web/index.html
@@ -20,5 +22,4 @@ function crear_apache() {
         sed -r "s/^(Match User marcador.*$)/\1,${usuario1}/g" "/etc/ssh/sshd_config" > /temp/sshd_config
 
         mv /temp/sshd_config /etc/ssh/sshd_config
-
 }

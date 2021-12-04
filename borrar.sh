@@ -10,7 +10,7 @@ function borrar (){
 
     # Listar usuarios
         echo -e "Usuarios del sistema web: \n " 
-            cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1
+            grep '/var/www'  < /etc/passwd | cut -d ':' -f 1
             echo -e "\n -- FIN DE LA LISTA -- \n \n"
    
     # Pedir usuario a modificar
@@ -36,9 +36,9 @@ function borrar (){
             at now + 30 days "userdel $usuario_a_borrar"
         
         # Disable apache & WP site
-            a2dissite $usuario_a_borrar.conf
-            a2dissite wp_$usuario_a_borrar.conf
-            mysql -e "REVOKE ALL PRIVILEGES, GRANT OPTION FROM $usuario_a_borrar;"
+            a2dissite $usuario_a_borrar.conf >/dev/null
+            a2dissite wp_$usuario_a_borrar.conf >/dev/null
+            mysql -e "REVOKE ALL PRIVILEGES ON wp_$usuario_a_borrar.* FROM $usuario_a_borrar;"
             systemctl reload apache2
         # AT +30d Delete DB & site data
             echo "rm -Rf /var/www/$usuario_a_borrar" | at now + 30 days
