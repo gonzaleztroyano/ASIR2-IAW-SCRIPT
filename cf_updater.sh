@@ -15,6 +15,12 @@ function cf_updater(){
      -H "Content-Type: application/json" \
      --data '{"type":"A","name":"'${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .
 
+    curl -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
+     -H "X-Auth-Email: ${global_cf_email}" \
+     -H "Authorization: Bearer ${global_cf_token} " \
+     -H "Content-Type: application/json" \
+     --data '{"type":"A","name":"'blog.${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .
+
     echo -e "Comprobando la resulución del dominio ${user_subdomain}.${global_base_domain}\n Por favor, espera..."
     sleep 5
     ip_resultado=$(dig A ${user_subdomain}.${global_base_domain} +short)

@@ -27,7 +27,7 @@ EOF
             exit
     fi
     mv /tmp/conf_inicial.log /tmp/conf_inicial.log.1
-    apt-get install -y apache2 php libapache2-mod-php libapache2-mod-php php-mysql php-cli mariadb-server mariadb-client php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip libapache2-mpm-itk apt-utils jq > /tmp/conf_inicial.log
+    apt-get install -y apache2 php libapache2-mod-php libapache2-mod-php php-mysql php-cli mariadb-server mariadb-client php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip libapache2-mpm-itk apt-utils jq certbot python3-certbot-apache > /tmp/conf_inicial.log
     if [[ $? = 0 ]]; then 
         echo -e "\t¡Hecho!\nSe han instalado los paqutes necesarios."
     else

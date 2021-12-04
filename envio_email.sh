@@ -20,7 +20,7 @@ curl --request POST \
           "SUBS_USERNAME": "'"$1"'",
           "SUBS_PASSWORD": "'"$2"'",
           "SUBS_HOST": "'"$1"'",
-          "SUBS_BASE_DOMAIN": "'"$global_sib_api_key"'"
+          "SUBS_BASE_DOMAIN": "'"$global_base_domain"'"
      },
      "templateId": 1
 }

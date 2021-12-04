@@ -65,8 +65,10 @@ function crear_usuario(){
 
         envio_email $usuario_nuevo $password_generada $correo_cliente
 
+        certbot --apache -d ${user_subdomain}.${global_base_domain} -d blog.${user_subdomain}.${global_base_domain} 
+
     # Confirmación y menú
-        echo "El usuario $usuario_nuevo se ha creado correctamente. "
+        echo "\nEl usuario $usuario_nuevo y sus sitios web se ha creado correctamente. "
         read -rsp "Pulse cualquier tecla para continuar  " -n 1
         menu
 }
