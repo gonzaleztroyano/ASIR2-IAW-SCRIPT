@@ -16,3 +16,8 @@ PrintMotd no
 AcceptEnv LANG LC_*
 ClientAliveInterval 120
 UseDNS no
+
+Match User marcador
+    ChrootDirectory %h
+    ForceCommand internal-sftp -u 0027
+    PasswordAuthentication yes

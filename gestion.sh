@@ -9,6 +9,7 @@ source envio_email.sh
 source menu.sh
 source modificar.sh
 source listar.sh
+source conf_inicial.sh
 
 if [ "$EUID" -ne 0 ]
   then echo "Este script de gestión solo puede ser ejecutado por el usuario root"

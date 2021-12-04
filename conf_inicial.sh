@@ -7,8 +7,6 @@ conf_inicial(){
     a2enmod rewrite
     
     cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-    
     wget -qO /etc/ssh/sshd_config https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-DOCS/main/misc/sshd_config
-
 
 }

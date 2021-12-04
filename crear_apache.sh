@@ -14,6 +14,11 @@ function crear_apache() {
         a2ensite $1.conf >> /dev/null
         systemctl reload apache2
 
-    # Configuración ChrootDirectory
-        printf "ChrootDirectory /var/www/$1" >> /etc/ssh/sshd_config.d/$1.conf
+    # Configuración ChrootDirectory y SSH
+        cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
+
+        sed -r "s/^(Match User marcador.*$)/\1,${usuario1}/g" "/etc/ssh/sshd_config" > /temp/sshd_config
+
+        mv /temp/sshd_config /etc/ssh/sshd_config
+
 }
