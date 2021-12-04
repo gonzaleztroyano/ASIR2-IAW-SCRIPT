@@ -18,7 +18,7 @@ function crear_apache() {
 
     # Configuración ChrootDirectory y SSH
         cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
-
+        touch /temp/sshd_config
         sed -r "s/^(Match User marcador.*$)/\1,${usuario1}/g" "/etc/ssh/sshd_config" > /temp/sshd_config
 
         mv /temp/sshd_config /etc/ssh/sshd_config

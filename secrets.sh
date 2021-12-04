@@ -1,7 +1,24 @@
     # Notas del fichero
         # Related issue: #21
 function secrets() {
-    clear
+        clear
+        echo ""
+        echo ""
+cat << "EOF" 
+
+
+    _____  _____ _____  _____ _____ _______   _____  ______    _____ ______  _____ _______ _____ ____  _   _  
+   / ____|/ ____|  __ \|_   _|  __ \__   __| |  __ \|  ____|  / ____|  ____|/ ____|__   __|_   _/ __ \| \ | | 
+  | (___ | |    | |__) | | | | |__) | | |    | |  | | |__    | |  __| |__  | (___    | |    | || |  | |  \| | 
+   \___ \| |    |  _  /  | | |  ___/  | |    | |  | |  __|   | | |_ |  __|  \___ \   | |    | || |  | | . ` | 
+   ____) | |____| | \ \ _| |_| |      | |    | |__| | |____  | |__| | |____ ____) |  | |   _| || |__| | |\  | 
+  |_____/ \_____|_|  \_\_____|_|      |_|    |_____/|______|  \_____|______|_____/   |_|  |_____\____/|_| \_| 
+                                                                                                             
+                                CC BY 4.0 Internacional Pablo González
+                        https://github.com/gonzaleztroyano/ASIR2-IAW-SCRIPT                                                                                
+
+                                   
+EOF
     echo -e "\e[1mIntroduzca los secretos y variables solicitadas\e[0m"
     echo ""
     read -rp "[1/5] - Dominio base para la configuración: " base_domain
@@ -22,8 +39,13 @@ function secrets() {
     echo "global_sib_api_key=\"$sib_api_key\""
     } >> ~/.bashrc
 
+    global_base_domain=\"$base_domain\"
+    global_cf_email=\"$cf_email\"
+    global_cf_zone=\"$cf_zone\"
+    global_cf_token=\"$cf_token\"
+    global_sib_api_key=\"$sib_api_key\"
+
     echo -e "\n \n Se han guardado los secretos. "
     read -p "Pulse cualquer tecla para continuar" trash
     menu
-
 }

@@ -13,7 +13,7 @@ function crear_usuario(){
 
         egrep "^$usuario_nuevo" /etc/passwd >/dev/null
         if [ $? -eq 0 ]; then
-            echo "$crear_apache_correct_user exists!"
+            echo "$usuario_nuevo exists!"
             echo ""
             read -p "pulse cualquier tecla para continuar" caca
             menu
