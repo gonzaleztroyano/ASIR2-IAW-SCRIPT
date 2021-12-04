@@ -39,11 +39,11 @@ EOF
     echo "global_sib_api_key=\"$sib_api_key\""
     } >> ~/.bashrc
 
-    global_base_domain=\"$base_domain\"
-    global_cf_email=\"$cf_email\"
-    global_cf_zone=\"$cf_zone\"
-    global_cf_token=\"$cf_token\"
-    global_sib_api_key=\"$sib_api_key\"
+    export global_base_domain=\"$base_domain\"
+    export global_cf_email=\"$cf_email\"
+    export global_cf_zone=\"$cf_zone\"
+    export global_cf_token=\"$cf_token\"
+    export global_sib_api_key=\"$sib_api_key\"
 
     echo -e "\n \n Se han guardado los secretos. "
     read -p "Pulse cualquer tecla para continuar" trash

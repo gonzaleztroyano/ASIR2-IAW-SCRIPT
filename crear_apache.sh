@@ -11,15 +11,15 @@ function crear_apache() {
     # Añadir página html para el sitio
         touch /var/www/$1/web/index.html
         printf "Bienvenido al sitio del usuario $1" > /var/www/$1/web/index.html
-    
+        chown $1:$1 /var/www/$1/web/index.html
+
     #Activar el sitio
         a2ensite $1.conf >> /dev/null
         systemctl reload apache2
 
     # Configuración ChrootDirectory y SSH
         cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
-        touch /temp/sshd_config
-        sed -r "s/^(Match User marcador.*$)/\1,${usuario1}/g" "/etc/ssh/sshd_config" > /temp/sshd_config
-
-        mv /temp/sshd_config /etc/ssh/sshd_config
+        touch /tmp/sshd_config
+        sed -r "s/^(Match User marcador.*$)/\1,${1}/" "/etc/ssh/sshd_config" > /tmp/sshd_config
+        mv /tmp/sshd_config /etc/ssh/sshd_config
 }

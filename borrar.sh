@@ -33,11 +33,11 @@ function borrar (){
             usermod -L $usuario_a_borrar
         
         # AT +30 remove user
-            at now + 30 days "userdel $usuario_a_borrar"
+            at now + 30 days "userdel -f $usuario_a_borrar"
         
         # Disable apache & WP site
-            a2dissite $usuario_a_borrar.conf >/dev/null
-            a2dissite wp_$usuario_a_borrar.conf >/dev/null
+            a2dissite $usuario_a_borrar.conf > /dev/null
+            a2dissite wp_$usuario_a_borrar.conf > /dev/null
             mysql -e "REVOKE ALL PRIVILEGES ON wp_$usuario_a_borrar.* FROM $usuario_a_borrar;"
             systemctl reload apache2
         # AT +30d Delete DB & site data

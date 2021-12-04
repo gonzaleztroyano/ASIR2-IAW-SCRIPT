@@ -12,6 +12,7 @@ source listar.sh
 source conf_inicial.sh
 source secrets.sh
 source cf_updater.sh
+source borrar_hard.sh
 
 export global_base_domain=$global_base_domain
 export global_cf_email=$global_cf_email

@@ -39,7 +39,7 @@ function crear_usuario(){
         echo "===================================="
 
     # Modificar permisos y ownership
-        chmod 751 /var/www/$usuario_nuevo/
+        chmod 755 /var/www/$usuario_nuevo/
         chown -R $usuario_nuevo:$usuario_nuevo /var/www/$usuario_nuevo/
         chown root:root /var/www/$usuario_nuevo/
         chmod -R 770 /var/www/$usuario_nuevo/*
@@ -68,7 +68,7 @@ function crear_usuario(){
         certbot --apache -d ${user_subdomain}.${global_base_domain} -d blog.${user_subdomain}.${global_base_domain} 
 
     # Confirmación y menú
-        echo "\nEl usuario $usuario_nuevo y sus sitios web se ha creado correctamente. "
+        echo -e "\nEl usuario $usuario_nuevo y sus sitios web se ha creado correctamente. "
         read -rsp "Pulse cualquier tecla para continuar  " -n 1
         menu
 }

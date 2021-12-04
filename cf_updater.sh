@@ -2,12 +2,6 @@
         # Recibe $usuario_nuevo (1) desde crear_usuario.sh
 function cf_updater(){
     user_subdomain=$1
-    echo $user_subdomain
-    echo $global_base_domain
-    echo $global_cf_email
-    echo $global_cf_token
-    echo $global_cf_zone
-    echo $global_sib_api_key
     ip_equipo=$(curl -sS ifconfig.me)
     curl -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
      -H "X-Auth-Email: ${global_cf_email}" \

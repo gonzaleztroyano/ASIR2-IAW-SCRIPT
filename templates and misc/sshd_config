@@ -11,7 +11,7 @@ MaxSessions 2
 PasswordAuthentication no
 ChallengeResponseAuthentication no
 UsePAM yes
-X11Forwarding yes
+#X11Forwarding yes
 PrintMotd no
 AcceptEnv LANG LC_*
 ClientAliveInterval 120

@@ -28,6 +28,7 @@ EOF
         echo ""
         echo "  6. Configuración de secretos"
         echo "  7. Configuración inicial del servidor."
+        echo "  8. Borrar usuario directamente (sin preguntar)"
         echo ""
         read -p "     Opción seleccionada: " seleccionada
 
@@ -46,6 +47,8 @@ EOF
                 secrets
             elif [[ $seleccionada = 7 ]]; then
                 conf_inicial
+            elif [[ $seleccionada = 8 ]]; then
+                borrar_hard
             else
                 echo "Opción no válida"
                 menu
