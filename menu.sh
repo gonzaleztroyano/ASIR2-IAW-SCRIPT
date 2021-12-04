@@ -27,6 +27,7 @@ EOF
         echo "  5. Salir del programa"
         echo ""
         echo "  6. Configuración de secretos"
+        echo "  7. Configuración inicial del servidor."
         echo ""
         read -p "     Opción seleccionada: " seleccionada
 
@@ -43,6 +44,8 @@ EOF
                 exit
             elif [[ $seleccionada = 6 ]]; then
                 secrets
+            elif [[ $seleccionada = 7 ]]; then
+                conf_inicial
             else
                 echo "Opción no válida"
                 menu
