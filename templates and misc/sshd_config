@@ -1,0 +1,23 @@
+# En GCP no cambiamos. Sí en otros proveedores. Confiugrar SSH Keys
+#Port 2225
+PermitRootLogin no
+LoginGraceTime 60
+Subsystem sftp internal-sftp
+PrintMotd no
+SyslogFacility AUTH
+LogLevel INFO
+MaxAuthTries 2
+MaxSessions 2 
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+ClientAliveInterval 120
+UseDNS no
+
+Match User marcador
+    ChrootDirectory %h
+    ForceCommand internal-sftp -u 0027
+    PasswordAuthentication yes

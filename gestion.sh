@@ -9,6 +9,7 @@ source envio_email.sh
 source menu.sh
 source modificar.sh
 source listar.sh
+source conf_inicial.sh
 source secrets.sh
 
 if [ "$EUID" -ne 0 ]
