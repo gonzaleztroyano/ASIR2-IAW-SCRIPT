@@ -15,7 +15,7 @@ function crear_wp(){
     
     # Crear Virtualhost y activar sitio
 
-        echo -e "<VirtualHost *:80> \n   ServerAdmin $1@localhost \n   ServerName blog.$1.$global_base_domain \n   DocumentRoot /var/www/$1/blog \n   ErrorLog /var/www/$1/ficheros/logs/blog.$1.$global_base_domain \n   CustomLog /var/www/$1/ficheros/logs/blog.$1.$global_base_domain-access combined \n   AssignUserID $1 $1  \n</VirtualHost> \n" > /etc/apache2/sites-available/wp_$1.conf
+        echo -e "<VirtualHost *:80> \n   ServerAdmin $1@localhost \n   ServerName blog.$1.$global_base_domain \n   DocumentRoot /var/www/$1/blog \n   ErrorLog /var/www/$1/ficheros/logs/blog.$1.$global_base_domain.log \n   CustomLog /var/www/$1/ficheros/logs/blog.$1.$global_base_domain-access.log combined \n   AssignUserID $1 $1  \n</VirtualHost> \n" > /etc/apache2/sites-available/wp_$1.conf
         
         # a2enmod rewrite
         a2ensite wp_$1.conf >> /dev/null
