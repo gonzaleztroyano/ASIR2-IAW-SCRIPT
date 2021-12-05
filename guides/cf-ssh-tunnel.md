@@ -8,7 +8,7 @@ Ya se encuentra desplegado el sitio en Cloudflare.
 
 2. Seleccionamos "Self-Hosted" como tipo de aplicación.
 
-[Selector de tipo de aplicacion](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-1.png)
+![Selector de tipo de aplicacion](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-1.png)
 
 3. En la siguiente pantalla, definimos la configuración:
     1. *SSH villablanca.me* como nombre
@@ -35,7 +35,7 @@ Nos mostrará una URL en la terminal como la siguiente: `https://dash.cloudflare
 
 3. Al abrirla, debemos seleccionar nuestro sitio y autorizar la conexión:
 
-[Autorizar la conexión](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-2.png)
+![Autorizar la conexión](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-2.png)
 
 4. Creamos el tunnel:
 ```
@@ -74,7 +74,7 @@ ingress:
     XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXXXXX.cfargotunnel.com
     # Siendo XX[...]XX el ID del *tunnel*. 
     ```
-[Registro CNAME](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-3.png)
+![Registro CNAME](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-3.png)
 
 8. Corremos el tunnel:
 
@@ -99,7 +99,7 @@ Este es un extracto:
 
 Podemos iniciar sesión desde el buscador:
 
-[Login Page](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-4.png)
+![Login Page](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-4.png)
 
 
 ## Correr el túnel como servicio
@@ -138,4 +138,5 @@ Nota importante respecto a los nombres de UNIX y el Single Sign-On:
     ```
 
 Ahora podemos utilizar el servicio de SSH a través del navegador:
-[Registro CNAME](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-5.png)
+
+![Registro CNAME](https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/guides/images/cf-guide-ssh-5.png)
