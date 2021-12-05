@@ -11,7 +11,9 @@ function borrar_hard () {
     else
         userdel -f $usuario_a_borrar
         a2dissite $usuario_a_borrar.conf > /dev/null
+        a2dissite $usuario_a_borrar-le-ssl.conf > /dev/null
         a2dissite wp_$usuario_a_borrar.conf > /dev/null
+        a2dissite wp_$usuario_a_borrar-le-ssl.conf > /dev/null
         mysql -e "REVOKE ALL PRIVILEGES ON wp_$usuario_a_borrar.* FROM $usuario_a_borrar;"
         systemctl reload apache2 > /dev/null
         rm -Rf /var/www/$usuario_a_borrar
