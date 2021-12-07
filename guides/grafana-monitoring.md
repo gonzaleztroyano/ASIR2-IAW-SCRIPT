@@ -33,8 +33,14 @@ Vamos a añadir el siguiente contenido donde corresponde (en LOKI):
               job: villablancame_apachelogs_clients
               __path__: /var/www/*/ficheros/logs/*.log
 ```
+Para el usuario de mysql:
+```
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+FLUSH PRIVILEGES;
+```
 
-Reiniciamos el servicio:
+## Reiniciamos el servicio:
 
 ```
 systemctl restart grafana-agent.service
