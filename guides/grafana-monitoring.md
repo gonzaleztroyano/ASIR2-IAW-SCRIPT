@@ -33,11 +33,19 @@ Vamos a añadir el siguiente contenido donde corresponde (en LOKI):
               job: villablancame_apachelogs_clients
               __path__: /var/www/*/ficheros/logs/*.log
 ```
-Para el usuario de mysql:
+## Configuración MySQL exporter
+Crear el usuario de mysql:
 ```
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
 FLUSH PRIVILEGES;
+```
+En el archivo de configuración de grafana:
+```
+integrations:
+  mysqld_exporter:
+    data_source_name: <USUARIO>:<CONTRASEÑA>@(localhost:3306)/
+    enabled: true
 ```
 
 ## Reiniciamos el servicio:
