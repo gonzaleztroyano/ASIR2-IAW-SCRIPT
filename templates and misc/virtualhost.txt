@@ -2,7 +2,7 @@
     ServerName USER-TO-CHANGE.GLOBAL-BASE-DOMAIN
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/USER-TO-CHANGE/web
-    ErrorLog /var/www/USER-TO-CHANGE/ficheros/logs/USER-TO-CHANGE-error.log
-    CustomLog /var/www/USER-TO-CHANGE/ficheros/logs/USER-TO-CHANGE-access.log combined
+    ErrorLog /var/log/apache2/USER-TO-CHANGE.GLOBAL-BASE-DOMAIN.log
+    CustomLog /var/log/apache2/USER-TO-CHANGE.GLOBAL-BASE-DOMAIN-access.log combined
     AssignUserID USER-TO-CHANGE USER-TO-CHANGE
 </VirtualHost>

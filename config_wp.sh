@@ -10,5 +10,8 @@ function config_wp(){
         # Sustitución de valores
             sed -i "s/database_name_here/$db_name/g" "/var/www/$1/blog/wp-config.php"
             sed -i "s/username_here/$1/g" "/var/www/$1/blog/wp-config.php"
-            sed -i "s/password_here/$2/g" "/var/www/$1/blog/wp-config.php"           
+            sed -i "s/password_here/$2/g" "/var/www/$1/blog/wp-config.php"
+        
+        #32: https://github.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/issues/32
+        curl https://api.wordpress.org/secret-key/1.1/salt/ >> "/var/www/$1/blog/wp-config.php" &> /dev/null            
 }

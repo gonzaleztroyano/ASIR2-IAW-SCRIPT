@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerAdmin USER-TO-CHANGE@localhost
+    ServerName blog.USER-TO-CHANGE.GLOBAL-BASE-DOMAIN
+    DocumentRoot /var/www/USER-TO-CHANGE/blog
+    ErrorLog /var/log/apache2/blog.USER-TO-CHANGE.GLOBAL-BASE-DOMAIN.log
+    CustomLog /var/log/apache2/blog.USER-TO-CHANGE.GLOBAL-BASE-DOMAIN-access.log combined
+    AssignUserID USER-TO-CHANGE USER-TO-CHANGE
+    <Directory /var/www/USER-TO-CHANGE/blog/>
+        AllowOverride All
+    </Directory>
+</VirtualHost>

@@ -13,11 +13,25 @@ function crear_wp(){
 
         mysql -e "GRANT ALL PRIVILEGES ON wp_$1.* TO '$1'@'localhost';"
     
+    #Logging files: touch, link and permissions
+
+        touch /var/log/apache2/blog.$1.$global_base_domain.log
+        touch /var/log/apache2/blog.$1.$global_base_domain-access.log
+
+        chmod 644 /var/log/apache2/blog.$1.$global_base_domain.log
+        chmod 644 /var/log/apache2/blog.$1.$global_base_domain-access.log
+
+        ln /var/log/apache2/blog.$1.$global_base_domain.log /var/www/$1/ficheros/logs/blog.$1.$global_base_domain.log
+
+        ln /var/log/apache2/blog.$1.$global_base_domain-access.log /var/www/$1/ficheros/logs/blog.$1.$global_base_domain-access.log
+
     # Crear Virtualhost y activar sitio
 
-        echo -e "<VirtualHost *:80> \n   ServerAdmin $1@localhost \n   ServerName blog.$1.$global_base_domain \n   DocumentRoot /var/www/$1/blog \n   ErrorLog /var/www/$1/ficheros/logs/blog.$1.$global_base_domain.log \n   CustomLog /var/www/$1/ficheros/logs/blog.$1.$global_base_domain-access.log combined \n   AssignUserID $1 $1  \n</VirtualHost> \n" > /etc/apache2/sites-available/wp_$1.conf
-        
-        # a2enmod rewrite
+        wget -qO /etc/apache2/sites-available/wp_$1.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/templates%20and%20misc/wp_virtualhost
+        sed -i "s/USER-TO-CHANGE/$1/g" "/etc/apache2/sites-available/wp_$1.conf"
+        sed -i "s/GLOBAL-BASE-DOMAIN/$global_base_domain/g" "/etc/apache2/sites-available/wp_$1.conf"
+
+        # activar el sitio rewrite
         a2ensite wp_$1.conf >> /dev/null
         sudo systemctl restart apache2
 
