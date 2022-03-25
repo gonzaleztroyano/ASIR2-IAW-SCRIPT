@@ -70,5 +70,6 @@ function crear_usuario(){
     # Confirmación y menú
         echo -e "\nEl usuario $usuario_nuevo y sus sitios web se ha creado correctamente. "
         read -rsp "Pulse cualquier tecla para continuar  " -n 1
+        systemctl reload ssh
         menu
 }

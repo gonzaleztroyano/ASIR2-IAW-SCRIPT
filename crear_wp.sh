@@ -37,7 +37,7 @@ function crear_wp(){
 
     # Descargar WP y extraer a tmp
         curl https://wordpress.org/latest.tar.gz --output /tmp/latest.tar.gz
-        mkdir /tmp/wordpress
+        mkdir /tmp/wordpress &> /dev/null 
         tar xzf /tmp/latest.tar.gz -C /tmp/wordpress
     
     # Mover archivos y configurar permisos. Limiar temporales
