@@ -1,18 +1,18 @@
 #!/bin/bash
 
-source borrar.sh
-source config_wp.sh
-source crear_apache.sh
-source crear_usuario.sh
-source crear_wp.sh
-source envio_email.sh
-source menu.sh
-source modificar.sh
-source listar.sh
-source conf_inicial.sh
-source secrets.sh
-source cf_updater.sh
-source borrar_hard.sh
+source source/borrar.sh
+source source/config_wp.sh
+source source/crear_apache.sh
+source source/crear_usuario.sh
+source source/crear_wp.sh
+source source/envio_email.sh
+source source/menu.sh
+source source/modificar.sh
+source source/listar.sh
+source source/conf_inicial.sh
+source source/secrets.sh
+source source/cf_updater.sh
+source source/borrar_hard.sh
 
 export global_base_domain=$global_base_domain
 export global_cf_email=$global_cf_email

@@ -3,14 +3,12 @@
 function cf_updater(){
     user_subdomain=$1
     ip_equipo=$(curl -sS ifconfig.me)
-    curl -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
-     -H "X-Auth-Email: ${global_cf_email}" \
+    curl --silent -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
      -H "Authorization: Bearer ${global_cf_token} " \
      -H "Content-Type: application/json" \
      --data '{"type":"A","name":"'${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .
 
-    curl -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
-     -H "X-Auth-Email: ${global_cf_email}" \
+    curl --silent -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
      -H "Authorization: Bearer ${global_cf_token} " \
      -H "Content-Type: application/json" \
      --data '{"type":"A","name":"'blog.${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .

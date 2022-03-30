@@ -13,5 +13,7 @@ function config_wp(){
             sed -i "s/password_here/$2/g" "/var/www/$1/blog/wp-config.php"
         
         #32: https://github.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/issues/32
-        curl https://api.wordpress.org/secret-key/1.1/salt/ >> "/var/www/$1/blog/wp-config.php" &> /dev/null            
+        SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
+        STRING='put your unique phrase here'
+        printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$1/blog/wp-config.php
 }
