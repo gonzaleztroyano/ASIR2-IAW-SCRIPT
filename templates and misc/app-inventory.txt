@@ -1,0 +1,20 @@
+En este documento se recogerán las distintas aplicaciones que se podrán instalar. 
+
+A su vez, una forma de mantener una lista con las aplicaciones que un usuario tiene instaladas. 
+
+Opciones:
+ - (Pos1) Sitio web estático
+ - (Pos2) WordPress
+ - (Pos3) PrestaShop
+
+
+Para mantener esta lista por cliente, usaremos una especie de lista binaria. De forma que podamos almacenarla con "encendidos y apagados".
+
+-----------------------------------------------
+| PrestaShop | WordPress | Sitio web estático |
+-----------------------------------------------
+|     0/1    |     0/1   |        0/1         |
+-----------------------------------------------
+
+De esta forma un usuario que tenga el sitio web estático y una instalación de PrestaShop, tendrá el número 101. 
+
