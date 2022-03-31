@@ -44,7 +44,6 @@ function crear_usuario(){
         chown root:root /var/www/$usuario_nuevo/
         chmod -R 770 /var/www/$usuario_nuevo/*
 
-
     # Pausa de confirmación
         read -p "Pulse cualquier tecla para continuar " caca 
     
@@ -65,9 +64,13 @@ function crear_usuario(){
 
         envio_email $usuario_nuevo $password_generada $correo_cliente
 
-        certbot --apache -d ${user_subdomain}.${global_base_domain} -d blog.${user_subdomain}.${global_base_domain} 
-        # For development use: --test-cert 
+        cert_creation
 
+    # Guardar contraseña por si fuera necesario.
+    # No se utiliza por el momento
+
+    #    save_passwd $usuario_nuevo $password_generada
+    
     # Confirmación y menú
         echo -e "\nEl usuario $usuario_nuevo y sus sitios web se ha creado correctamente. "
         read -rsp "Pulse cualquier tecla para continuar  " -n 1
