@@ -1,3 +1,5 @@
 function add_app() {
-    echo -e "Listando aplicacio"
+    app_list silent
+    apps_instaladas=$?
+    
 }

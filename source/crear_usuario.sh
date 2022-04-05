@@ -55,14 +55,14 @@ function crear_usuario(){
 
         # Hasta que no se introduzca un email correcto, no se continúa con la ejecución.
         read -p "Indique el correo electrónico del cliente: " correo_cliente
-        mail_regex="^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
+        mail_regex="^[a-zA-Z0-9_-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
         until [[ ${correo_cliente} =~ ${mail_regex} ]];
         do
             echo -e "\e[5mERROR\e[0m: correo no válido.\n"
             read -p "Indique el correo electrónico del cliente: " correo_cliente
         done
 
-        envio_email ${usuario_nuevo} ${password_generada} ${correo_cliente}
+        envio_email ${usuario_nuevo} ${password_generada} ${correo_cliente} 1
 
         cert_creation ${usuario_nuevo}
 

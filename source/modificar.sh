@@ -9,7 +9,6 @@ function modificar(){
     
     # Comprobar si el usuario existe
         check_usuario_existe=$(cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w $usuario_a_modificar)
-
         if [[ $check_usuario_existe != $usuario_a_modificar ]]; then
 
             echo "El usuario indicado no existe" 
@@ -26,21 +25,22 @@ function modificar(){
                     printf "$usuario_a_modificar:$password_nueva_1"  | chpasswd
                     echo "¡Contraseña actualizada!"
                     read -p "Pulse cualquier tecla para continuar" caca
-                    menu
             else
                 echo "\e[5mERROR \e[0m: las contraseñas no coinciden"
+                read -p "Pulse cualquier tecla para continuar" caca
                 menu
             fi
         fi
         #TODO: #39 Enviar correo con la contraseña cambiada.
             # Hasta que no se introduzca un email correcto, no se continúa con la ejecución.
             read -p "Indique el correo electrónico del cliente: " correo_cliente
-            mail_regex="^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
+            mail_regex="^[a-zA-Z0-9_-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
             until [[ ${correo_cliente} =~ ${mail_regex} ]];
             do
                 echo -e "\e[5mERROR\e[0m: correo no válido.\n"
                 read -p "Indique el correo electrónico del cliente: " correo_cliente
             done
-            envio_email ${usuario_a_modificar} ${password_nueva_1} ${correo_cliente}
+            envio_email ${usuario_a_modificar} ${password_nueva_1} ${correo_cliente} 2
+            read -p "¡Listo!\nPulse cualquier tecla para volver al menú" caca
     menu
 }   
