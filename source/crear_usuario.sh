@@ -29,50 +29,55 @@ function crear_usuario(){
         printf "$usuario_nuevo:$password_generada" | chpasswd
 
         echo "Usuario " $usuario_nuevo " creado"
-        echo "===============ANOTE================"
-        echo "||         LA CONTRASEÑA          ||"
-        echo "||                                ||"
-        echo "||                                ||"
-        echo "||      $password_generada          ||"
-        echo "||                                ||"
-        echo "||                                ||"
-        echo "===================================="
+        # echo "===============ANOTE================"
+        # echo "||         LA CONTRASEÑA          ||"
+        # echo "||                                ||"
+        # echo "||                                ||"
+        # echo "||      $password_generada          ||"
+        # echo "||                                ||"
+        # echo "||                                ||"
+        # echo "===================================="
 
     # Modificar permisos y ownership
         chmod 755 /var/www/$usuario_nuevo/
         chown -R $usuario_nuevo:$usuario_nuevo /var/www/$usuario_nuevo/
-        chown root:root /var/www/$usuario_nuevo/
-        chmod -R 770 /var/www/$usuario_nuevo/*
+        chown root:root /var/www/${usuario_nuevo}/
+        chmod -R 770 /var/www/${usuario_nuevo}/*
 
     # Pausa de confirmación
         read -p "Pulse cualquier tecla para continuar " caca 
     
     # Llamar a funciones extrañas
-        crear_apache $usuario_nuevo
-        crear_wp $usuario_nuevo $password_generada
-        config_wp $usuario_nuevo $password_generada
-        cf_updater $usuario_nuevo
+        crear_apache ${usuario_nuevo}
+        #crear_wp $usuario_nuevo $password_generada
+        #config_wp $usuario_nuevo $password_generada
+        cf_updater ${usuario_nuevo}
 
         # Hasta que no se introduzca un email correcto, no se continúa con la ejecución.
         read -p "Indique el correo electrónico del cliente: " correo_cliente
-        mail_regex="^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,5}$"
-        until [[ $correo_cliente =~ $mail_regex ]];
+        mail_regex="^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
+        until [[ ${correo_cliente} =~ ${mail_regex} ]];
         do
             echo -e "\e[5mERROR\e[0m: correo no válido.\n"
             read -p "Indique el correo electrónico del cliente: " correo_cliente
         done
 
-        envio_email $usuario_nuevo $password_generada $correo_cliente
+        envio_email ${usuario_nuevo} ${password_generada} ${correo_cliente}
 
-        cert_creation
+        cert_creation ${usuario_nuevo}
 
     # Guardar contraseña por si fuera necesario.
-    # No se utiliza por el momento
-
-    #    save_passwd $usuario_nuevo $password_generada
+        # No se utiliza por el momento
+        #    save_passwd $usuario_nuevo $password_generada
     
+    # Guardar el inventario de los recursos
+        destination="/root/app_list/${usuario_nuevo}"
+
+        mkdir -p ${destination}
+        echo "001" > ${destination}
+
     # Confirmación y menú
-        echo -e "\nEl usuario $usuario_nuevo y sus sitios web se ha creado correctamente. "
+        echo -e "\nEl usuario ${usuario_nuevo} y sus sitios web se ha creado correctamente. "
         read -rsp "Pulse cualquier tecla para continuar  " -n 1
         systemctl reload ssh
         menu
