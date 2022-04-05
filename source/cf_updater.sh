@@ -42,4 +42,5 @@ function cf_updater(){
         else
             echo -e "No se ha podido comprobar la correcta resolución del dominio. \n\n No nos alarmemos.\n Prueba el siguiente comando: \"dig A ${service_subdomain}.${user_subdomain}.${global_base_domain} +short @1.1.1.1\" \n\nEl resultado debe ser: ${ip_equipo} \n\n De no resolverse, revisa en Cloudflare.\n\n"
         fi
+    fi
 }
