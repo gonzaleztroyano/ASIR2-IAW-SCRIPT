@@ -58,7 +58,7 @@ function app_list() {
 
             if [[ ${bin_apps:1:1} = 0 ]]; then  
                 has_wp="❌"
-                elif [[ ${bin_apps:0:1} = 1 ]]; then
+                elif [[ ${bin_apps:1:1} = 1 ]]; then
                     has_wp="✅"
                 else
                     has_wp="?"
@@ -66,7 +66,7 @@ function app_list() {
 
             if [[ ${bin_apps:2:1} = 0 ]]; then  
                 has_ss="❌"
-                elif [[ ${bin_apps:0:1} = 1 ]]; then
+                elif [[ ${bin_apps:2:1} = 1 ]]; then
                     has_ss="✅"
                 else
                     has_ss="?"
@@ -78,15 +78,15 @@ function app_list() {
                 echo -e "   Para el usuario:    ${usuario_a_listar_apps}\n"
                 echo "|==================================================|"
                 echo "|                       ||                         |"
-                echo "|     Sitio estático    ||         ${has_ss}       |"
+                echo "|     Sitio estático    ||         ${has_ss}              |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
                 echo "|                       ||                         |"
-                echo "|     Sitio WordPress   ||         ${has_wp}       |"
+                echo "|     Sitio WordPress   ||         ${has_wp}              |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
                 echo "|                       ||                         |"
-                echo "|    Sitio PrestaShop   ||         ${has_ps}       |"
+                echo "|    Sitio PrestaShop   ||         ${has_ps}              |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
                 echo ""

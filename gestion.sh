@@ -16,6 +16,8 @@ source source/borrar_hard.sh
 source source/save_passwd.sh
 source source/app_list.sh
 source source/show_header.sh
+source source/add_app.sh
+source source/cert_creation.sh
 
 export global_base_domain=$global_base_domain
 export global_cf_email=$global_cf_email

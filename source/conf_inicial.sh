@@ -40,6 +40,7 @@ EOF
     cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
     wget -qO /etc/ssh/sshd_config https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/templates%20and%20misc/sshd_config >> /tmp/conf_inicial.log
     service ssh reload >> /tmp/conf_inicial.log
+    mkdir -p /root/app_list/
     read -p "Pulsa cualquier tecla para continuar..."
     menu
 }
