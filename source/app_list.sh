@@ -2,27 +2,38 @@ function app_list() {
     # Modo "silent":
         # No muestra header
         # Pide usuario, comprueba
-        #Retorna valor binario
+        # Retorna valor binario
     # Modo "bonito"
         # Muestra header
         # Pide usuario, comprueba
         # Muestra tablita
+    # Modo "tabla"
+        # No muestra header
+        # Pide usuario, comprueba
+        # Muestra tablita. 
+        # Retorna valor binario 
     # VARS:
-        # $1: mode: "silent" or "bonito"
+        # $1: mode: "silent" or "bonito" or "tabla"
+        # $2: user: id usuario ya comprobado
 
     if [[ $1 = "bonito" ]]; then
         show_header
     fi
 
-    # Listar usuarios
-        echo -e "Usuarios del sistema web: \n " 
-            cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1
-            echo -e "\n -- FIN DE LA LISTA -- \n \n"
-    
-    # Pedir usuario a modificar
-        read -p "Indicar el usuario sobre el que se desea listar las aplicaciones instaladas: " usuario_a_listar_apps
-    
-    # Comprobar si el usuario existe
+    if [[ ${#} = 1 ]]; then
+        # Listar usuarios
+            echo -e "Usuarios del sistema web: \n " 
+                cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1
+                echo -e "\n -- FIN DE LA LISTA -- \n \n"
+        
+        # Pedir usuario a modificar
+            read -p "Indicar el usuario sobre el que se desea listar las aplicaciones instaladas: " usuario_a_listar_apps
+        
+        # Comprobar si el usuario existe
+    fi
+    if [[ ${#} = 2 ]]; then
+        usuario_a_listar_apps=${2}
+    fi
         check_usuario_existe=$(cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w ${usuario_a_listar_apps})
         if [[ ${check_usuario_existe} != ${usuario_a_listar_apps} ]]; then
 
@@ -34,7 +45,7 @@ function app_list() {
             bin_apps=$(cat /root/app_list/${usuario_a_listar_apps})
             
             if [[ $1 = "silent" ]]; then
-                return ${bin_apps}
+                return "${bin_apps}"
             fi
 
             if [[ ${bin_apps:0:1} = 0 ]]; then  
@@ -61,7 +72,7 @@ function app_list() {
                     has_ss="?"
             fi
 
-            if [[ $1 = "bonito" ]]; then
+            if [[ $1 = "bonito" ]] || [[ $1 = "tabla" ]]; then
 
                 show_header
                 echo -e "   Para el usuario:    ${usuario_a_listar_apps}\n"
@@ -78,9 +89,13 @@ function app_list() {
                 echo "|    Sitio PrestaShop   ||         ${has_ps}       |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
-                echo -e "\n \n Volver al menú..."
-                read
-                menu
+                echo ""
+                if [[ $1 = "tabla" ]]; then
+                    return "${bin_apps}"
+                fi
+            echo -e "\n \n Volver al menú..."
+            read
+            menu
             fi
         fi
 }
