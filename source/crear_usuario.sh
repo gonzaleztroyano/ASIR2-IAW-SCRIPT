@@ -73,7 +73,6 @@ function crear_usuario(){
     # Guardar el inventario de los recursos
         destination="/root/app_list/${usuario_nuevo}"
 
-        mkdir -p ${destination}
         echo "001" > ${destination}
 
     # Confirmación y menú

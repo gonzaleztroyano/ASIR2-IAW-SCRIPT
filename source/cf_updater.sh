@@ -7,13 +7,13 @@ function cf_updater(){
     user_subdomain=$1
     service_subdomain=$2
     ip_equipo=$(curl -sS ifconfig.me)
-    
+
     if [[ $# = 1 ]]; then 
         curl --silent -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
         -H "Authorization: Bearer ${global_cf_token} " \
         -H "Content-Type: application/json" \
-        --data '{"type":"A","name":"'${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .
-        
+        --data '{"type":"A","name":"'${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .result
+
         echo -e "Comprobando la resulución del dominio ${user_subdomain}.${global_base_domain}\n Por favor, espera..."
         sleep 5
         ip_resultado=$(dig A ${user_subdomain}.${global_base_domain} +short)
@@ -25,12 +25,12 @@ function cf_updater(){
         else
             echo -e "No se ha podido comprobar la correcta resolución del dominio. \n\n No nos alarmemos.\n Prueba el siguiente comando: \"dig A ${user_subdomain}.${global_base_domain} +short\" \n\nEl resultado debe ser: ${ip_equipo} \n\n De no resolverse, revisa en Cloudflare.\n\n"
         fi
-    
-    elif [[ $# = 2 ]]; then 
+
+    elif [[ $# = 2 ]]; then
         curl --silent -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
         -H "Authorization: Bearer ${global_cf_token} " \
         -H "Content-Type: application/json" \
-        --data '{"type":"A","name":"'${service_subdomain}.${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .
+        --data '{"type":"A","name":"'${service_subdomain}.${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .result
 
         echo -e "Comprobando la resulución del dominio ${service_subdomain}.${user_subdomain}.${global_base_domain}\n Por favor, espera..."
         sleep 5

@@ -10,7 +10,7 @@ function envio_email() {
         # VARS: Servicio nuevo ($5):
           # blog --> WP
           # tienda --> PS
-     plantilla=${1}
+     plantilla=${4}
 
      if [[ ${plantilla} = 1 ]]; then
 curl --request POST \
