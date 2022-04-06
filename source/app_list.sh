@@ -78,19 +78,19 @@ function app_list() {
                 echo -e "   Para el usuario:    ${usuario_a_listar_apps}\n"
                 echo "|==================================================|"
                 echo "|                       ||                         |"
-                echo "|     Sitio estático    ||         ${has_ss}              |"
+                echo "|     Sitio estático    ||           ${has_ss}            |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
                 echo "|                       ||                         |"
-                echo "|     Sitio WordPress   ||         ${has_wp}              |"
+                echo "|     Sitio WordPress   ||           ${has_wp}            |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
                 echo "|                       ||                         |"
-                echo "|    Sitio PrestaShop   ||         ${has_ps}              |"
+                echo "|    Sitio PrestaShop   ||           ${has_ps}            |"
                 echo "|                       ||                         |"
                 echo "|==================================================|"
                 echo ""
-                if [[ $1 = "tabla" ]]; then
+                if [[ ${1} = "tabla" ]]; then
                     return "${bin_apps}"
                 fi
             echo -e "\n \n Volver al menú..."

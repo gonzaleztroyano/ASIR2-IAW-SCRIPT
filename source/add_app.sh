@@ -34,8 +34,8 @@ function add_app() {
     fi
 
     if [[ $app_a_instalar = 1 ]]; then
-        crear_wp $usuario_nuevo $password_generada
-        config_wp $usuario_nuevo $password_generada
+        crear_wp $usuario_a_listar_apps $password_generada
+        config_wp $usuario_a_listar_apps $password_generada
 
         echo "Se ha instalado correctamente la aplicación WordPress para el usuario ${usuario_a_listar_apps}"
         menu
