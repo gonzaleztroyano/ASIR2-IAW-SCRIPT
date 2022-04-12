@@ -37,6 +37,11 @@ EOF
     echo "global_cf_zone=\"$cf_zone\""
     echo "global_cf_token=\"$cf_token\""
     echo "global_sib_api_key=\"$sib_api_key\""
+    echo "export global_base_domain"
+    echo "export global_cf_email"
+    echo "export global_cf_zone" 
+    echo "export global_cf_token" 
+    echo "export global_sib_api_key"
     } >> ~/.bashrc
 
     export global_base_domain=\"$base_domain\"
@@ -45,7 +50,7 @@ EOF
     export global_cf_token=\"$cf_token\"
     export global_sib_api_key=\"$sib_api_key\"
 
-    echo -e "\n \n Se han guardado los secretos. "
+    echo -e "\n \nSe han guardado los secretos.\nEs posible que debas reiniciar la sesión para ver aplicados los cambios."
     read -p "Pulse cualquer tecla para continuar" trash
     menu
 }

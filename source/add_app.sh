@@ -14,7 +14,7 @@ function add_app() {
         read "Volver al menú..."
         menu
     else
-        app_list tabla usuario_a_listar_apps
+        app_list tabla ${usuario_a_listar_apps}
         apps_instaladas=$?
     fi
 
@@ -34,6 +34,7 @@ function add_app() {
     fi
 
     if [[ $app_a_instalar = 1 ]]; then
+        password_generada=$(openssl rand -base64 12)
         crear_wp $usuario_a_listar_apps $password_generada
         config_wp $usuario_a_listar_apps $password_generada
 
