@@ -73,7 +73,7 @@ function crear_usuario(){
     # Guardar el inventario de los recursos
         destination="/root/app_list/${usuario_nuevo}"
 
-        echo "001" > ${destination}
+wrap        echo "001" > ${destination}
 
     # Confirmación y menú
         echo -e "\nEl usuario ${usuario_nuevo} y sus sitios web se ha creado correctamente. "
