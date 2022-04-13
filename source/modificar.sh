@@ -11,7 +11,7 @@ function modificar(){
         check_usuario_existe=$(cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w $usuario_a_modificar)
         if [[ $check_usuario_existe != $usuario_a_modificar ]]; then
 
-            echo "El usuario indicado no existe" 
+            read "El usuario indicado no existe" caca 
             menu
         else
         
@@ -41,6 +41,7 @@ function modificar(){
                 read -p "Indique el correo electrónico del cliente: " correo_cliente
             done
             envio_email ${usuario_a_modificar} ${password_nueva_1} ${correo_cliente} 2
+            echo ""
             read -p "¡Listo!\nPulse cualquier tecla para volver al menú" caca
     menu
 }   

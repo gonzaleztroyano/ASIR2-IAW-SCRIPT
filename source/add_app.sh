@@ -37,8 +37,25 @@ function add_app() {
         password_generada=$(openssl rand -base64 12)
         crear_wp $usuario_a_listar_apps $password_generada
         config_wp $usuario_a_listar_apps $password_generada
+        
+        cf_updater $usuario_a_listar_apps blog
 
+        cert_creation "blog.${usuario_a_listar_apps}"
+        
+            destination="/root/app_list/${usuario_a_listar_apps}"
+            echo "011" > ${destination}
+
+        read -p "Indique el correo electrónico del cliente: " correo_cliente
+        mail_regex="^[a-zA-Z0-9_-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
+        until [[ ${correo_cliente} =~ ${mail_regex} ]];
+        do
+            echo -e "\e[5mERROR\e[0m: correo no válido.\n"
+            read -p "Indique el correo electrónico del cliente: " correo_cliente
+        done
+        envio_email ${usuario_nuevo} not_applicable ${correo_cliente} 3 blog
+        
         echo "Se ha instalado correctamente la aplicación WordPress para el usuario ${usuario_a_listar_apps}"
+        read -p "Pulse cualquier tecla para continuar" caca
         menu
     fi
 
