@@ -12,7 +12,7 @@ function cf_updater(){
         curl --silent -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
         -H "Authorization: Bearer ${global_cf_token} " \
         -H "Content-Type: application/json" \
-        --data '{"type":"A","name":"'${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .result
+        --data '{"type":"A","name":"'${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .success
 
         echo -e "Comprobando la resulución del dominio ${user_subdomain}.${global_base_domain}\n Por favor, espera..."
         sleep 5
@@ -30,7 +30,7 @@ function cf_updater(){
         curl --silent -X POST "https://api.cloudflare.com/client/v4/zones/${global_cf_zone}/dns_records" \
         -H "Authorization: Bearer ${global_cf_token} " \
         -H "Content-Type: application/json" \
-        --data '{"type":"A","name":"'${service_subdomain}.${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .result
+        --data '{"type":"A","name":"'${service_subdomain}.${user_subdomain}.${global_base_domain}'","content":"'${ip_equipo}'","ttl":3600,"proxied":false}' | jq .success
 
         echo -e "Comprobando la resulución del dominio ${service_subdomain}.${user_subdomain}.${global_base_domain}\n Por favor, espera..."
         sleep 5

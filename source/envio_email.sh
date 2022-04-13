@@ -49,7 +49,7 @@ curl --request POST \
      ],
      "params": {
           "SUBS_USERNAME": "'"$1"'",
-          "SUBS_PASSWORD": "'"$2"'",
+          "SUBS_PASSWORD": "'"$2"'"
      },
      "templateId": 2
 }
@@ -72,7 +72,7 @@ curl --request POST \
           "SUBS_SERVICE": "'"$5"'",
           "SUBS_BASE_DOMAIN": "'"$global_base_domain"'"
      },
-     "templateId": 1
+     "templateId": 3
 }
 ' 
 fi
