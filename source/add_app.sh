@@ -33,12 +33,12 @@ function add_app() {
         menu
     fi
 
-    if [[ $app_a_instalar = 1 ]]; then
+    if [[ ${app_a_instalar} = 1 ]]; then
         password_generada=$(openssl rand -base64 12)
-        crear_wp $usuario_a_listar_apps $password_generada
-        config_wp $usuario_a_listar_apps $password_generada
+        crear_wp ${usuario_a_listar_apps} ${password_generada}
+        config_wp ${usuario_a_listar_apps} ${password_generada}
         
-        cf_updater $usuario_a_listar_apps blog
+        cf_updater ${usuario_a_listar_apps} blog
 
         cert_creation "blog.${usuario_a_listar_apps}"
         
@@ -63,7 +63,7 @@ function add_app() {
         menu
     fi
 
-    if [[ $app_a_instalar = 2 ]]; then
+    if [[ ${app_a_instalar} = 2 ]]; then
         install_prestashop ${usuario_a_listar_apps}
 
         destination="/root/app_list/${usuario_a_listar_apps}"

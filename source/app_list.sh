@@ -16,7 +16,7 @@ function app_list() {
         # $1: mode: "silent" or "bonito" or "tabla"
         # $2: user: id usuario ya comprobado
 
-    if [[ $1 = "bonito" ]]; then
+    if [[ ${1} = "bonito" ]]; then
         show_header
     fi
 
@@ -44,7 +44,7 @@ function app_list() {
         # Si existe, actuar:
             bin_apps=$(cat /root/app_list/${usuario_a_listar_apps})
             
-            if [[ $1 = "silent" ]]; then
+            if [[ ${1} = "silent" ]]; then
                 return "${bin_apps}"
             fi
 
@@ -72,7 +72,7 @@ function app_list() {
                     has_ss="?"
             fi
 
-            if [[ $1 = "bonito" ]] || [[ $1 = "tabla" ]]; then
+            if [[ ${1} = "bonito" ]] || [[ ${1} = "tabla" ]]; then
 
                 show_header
                 echo -e "   Para el usuario:    ${usuario_a_listar_apps}\n"

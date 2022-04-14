@@ -1,7 +1,7 @@
 function save_passwd(){
      # Notas del fichero
-        # VARS: username ($1)
-        # VARS: password ($2)
+        # VARS: username (${1})
+        # VARS: password (${2})
 
     destination="/root/user_credentials/${username}"
 
