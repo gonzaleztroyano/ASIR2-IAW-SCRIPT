@@ -17,9 +17,9 @@ function borrar (){
         read -p "¿Qué usuario desea borrar? " usuario_a_borrar
 
     # Comprobar si el usuario existe
-        check_usuario_existe=$(cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w $usuario_a_borrar)
+        check_usuario_existe=$(cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w ${usuario_a_borrar})
 
-        if [[ $check_usuario_existe != "$usuario_a_borrar" ]]; then
+        if [[ ${check_usuario_existe} != "${usuario_a_borrar}" ]]; then
 
     # Si el usuario NO existe, error y volver
             echo "El usuario indicado no existe" 
@@ -30,26 +30,26 @@ function borrar (){
     # Si el usuario SÍ existe, proceder:
 
         # Disable user 
-            usermod -L $usuario_a_borrar
+            usermod -L ${usuario_a_borrar}
         
         # AT +30 remove user
-            at now + 30 days "userdel -f $usuario_a_borrar"
+            at now + 30 days "userdel -f ${usuario_a_borrar}"
         
         # Disable apache & WP site
-            a2dissite $usuario_a_borrar.conf > /dev/null
-            a2dissite $usuario_a_borrar-le-ssl.conf > /dev/null
-            a2dissite wp_$usuario_a_borrar.conf > /dev/null
-            a2dissite wp_$usuario_a_borrar-le-ssl.conf > /dev/null
-            mysql -e "REVOKE ALL PRIVILEGES ON wp_$usuario_a_borrar.* FROM $usuario_a_borrar;"
+            a2dissite ${usuario_a_borrar}.conf > /dev/null
+            a2dissite ${usuario_a_borrar}-le-ssl.conf > /dev/null
+            a2dissite wp_${usuario_a_borrar}.conf > /dev/null
+            a2dissite wp_${usuario_a_borrar}-le-ssl.conf > /dev/null
+            mysql -e "REVOKE ALL PRIVILEGES ON wp_${usuario_a_borrar}.* FROM ${usuario_a_borrar};"
             systemctl reload apache2
         # AT +30d Delete DB & site data
-            echo "rm -Rf /var/www/$usuario_a_borrar" | at now + 30 days
-            echo "mysql -e 'DROP DATABASE IF EXISTS wp_$usuario_a_borrar;'" | at now + 30 days
-            echo "mysql -e 'DROP USER IF EXISTS $usuario_a_borrar;'" | at now + 30 days
+            echo "rm -Rf /var/www/${usuario_a_borrar}" | at now + 30 days
+            echo "mysql -e 'DROP DATABASE IF EXISTS wp_${usuario_a_borrar};'" | at now + 30 days
+            echo "mysql -e 'DROP USER IF EXISTS ${usuario_a_borrar};'" | at now + 30 days
 
         #Confirmación
-            echo "$usuario_a_borrar, sus sitios y accesos hasn sido deshabilitados correctamente"
-            echo "$usuario_a_borrar y sus sitios han sido programados para eliminación en 30 días."
+            echo "${usuario_a_borrar}, sus sitios y accesos hasn sido deshabilitados correctamente"
+            echo "${usuario_a_borrar} y sus sitios han sido programados para eliminación en 30 días."
             read -p "Pulse intro para volver al menú" caca
         menu
     fi

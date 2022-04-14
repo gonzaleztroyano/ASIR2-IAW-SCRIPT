@@ -12,7 +12,7 @@ function install_prestashop(){
     chmod 644 /var/log/apache2/${usuario}.${global_base_domain}-tienda.log
     chmod 644 /var/log/apache2/${usuario}.${global_base_domain}-tienda-access.log
 
-    ln /var/log/apache2/${usuario}.${global_base_domain}-tienda.log /var/www/${usuario}/ficheros/logs/${usuario}.{$global_base_domain}-tienda.log
+    ln /var/log/apache2/${usuario}.${global_base_domain}-tienda.log /var/www/${usuario}/ficheros/logs/${usuario}.${global_base_domain}-tienda.log
     ln /var/log/apache2/${usuario}.${global_base_domain}-tienda-access.log /var/www/${usuario}/ficheros/logs/${usuario}.${global_base_domain}-tienda-access.log
    
     wget -qO /etc/apache2/sites-available/tienda_${usuario}.conf https://raw.githubusercontent.com/gonzaleztroyano/ASIR2-IAW-SCRIPT/main/templates%20and%20misc/tienda_virtualhost.txt

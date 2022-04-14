@@ -19,7 +19,7 @@ source source/show_header.sh
 source source/add_app.sh
 source source/cert_creation.sh
 
-if [ "$EUID" -ne 0 ]
+if [ "${EUID}" -ne 0 ]
   then echo "Este script de gestión solo puede ser ejecutado por el usuario root"
   exit
 fi

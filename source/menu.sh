@@ -18,26 +18,26 @@ function menu() {
         echo ""
         read -p "     Opción seleccionada: " seleccionada
 
-        if [[ $seleccionada = 1 ]]; then
+        if [[ ${seleccionada} = 1 ]]; then
                 listar
-            elif [[ $seleccionada = 2 ]]; then
+            elif [[ ${seleccionada} = 2 ]]; then
                 crear_usuario
-            elif [[ $seleccionada = 31 ]]; then
+            elif [[ ${seleccionada} = 31 ]]; then
                 add_app
-            elif [[ $seleccionada = 32 ]]; then
+            elif [[ ${seleccionada} = 32 ]]; then
                 app_list bonito
-            elif [[ $seleccionada = 4 ]]; then
+            elif [[ ${seleccionada} = 4 ]]; then
                 borrar
-            elif [[ $seleccionada = 5 ]]; then
+            elif [[ ${seleccionada} = 5 ]]; then
                 modificar
-            elif [[ $seleccionada = 6 ]]; then
+            elif [[ ${seleccionada} = 6 ]]; then
                 echo ""
                 exit
-            elif [[ $seleccionada = 7 ]]; then
+            elif [[ ${seleccionada} = 7 ]]; then
                 secrets
-            elif [[ $seleccionada = 8 ]]; then
+            elif [[ ${seleccionada} = 8 ]]; then
                 conf_inicial
-            elif [[ $seleccionada = 9 ]]; then
+            elif [[ ${seleccionada} = 9 ]]; then
                 borrar_hard
             else
                 echo "Opción no válida"

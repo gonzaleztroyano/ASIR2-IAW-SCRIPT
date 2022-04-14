@@ -32,11 +32,11 @@ EOF
     read -rp "[5/5] - Token API de SendInBlue: " sib_api_key
 
     {
-    echo "global_base_domain=\"$base_domain\""
-    echo "global_cf_email=\"$cf_email\""
-    echo "global_cf_zone=\"$cf_zone\""
-    echo "global_cf_token=\"$cf_token\""
-    echo "global_sib_api_key=\"$sib_api_key\""
+    echo "global_base_domain=\"${base_domain}\""
+    echo "global_cf_email=\"${cf_email}\""
+    echo "global_cf_zone=\"${cf_zone}\""
+    echo "global_cf_token=\"${cf_token}\""
+    echo "global_sib_api_key=\"${sib_api_key}\""
     echo "export global_base_domain"
     echo "export global_cf_email"
     echo "export global_cf_zone" 
@@ -44,11 +44,11 @@ EOF
     echo "export global_sib_api_key"
     } >> ~/.bashrc
 
-    export global_base_domain=\"$base_domain\"
-    export global_cf_email=\"$cf_email\"
-    export global_cf_zone=\"$cf_zone\"
-    export global_cf_token=\"$cf_token\"
-    export global_sib_api_key=\"$sib_api_key\"
+    export global_base_domain=\"${base_domain}\"
+    export global_cf_email=\"${cf_email}\"
+    export global_cf_zone=\"${cf_zone}\"
+    export global_cf_token=\"${cf_token}\"
+    export global_sib_api_key=\"${sib_api_key}\"
 
     echo -e "\n \nSe han guardado los secretos.\nEs posible que debas reiniciar la sesión para ver aplicados los cambios."
     read -p "Pulse cualquer tecla para continuar" trash

@@ -1,5 +1,5 @@
     #Notas:
-        # Recibe $usuario_nuevo (1) desde crear_usuario.sh
+        # Recibe ${usuario_nuevo} (1) desde crear_usuario.sh
         # Recibe el servicio, en caso de ser necesario ($2)
         #PEJ:
             # blog.pepe.villablanca.me --> ${2}.{$1}.villablanca.me
