@@ -41,7 +41,7 @@ function modificar(){
                 read -p "Indique el correo electrónico del cliente: " correo_cliente
             done
             envio_email ${usuario_a_modificar} ${password_nueva_1} ${correo_cliente} 2
-            echo ""
-            read -p "¡Listo!\nPulse cualquier tecla para volver al menú" caca
+            echo "¡Listo!"
+            read -p "Pulse cualquier tecla para volver al menú" caca
     menu
 }   

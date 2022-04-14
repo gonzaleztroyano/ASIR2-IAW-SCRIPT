@@ -6,7 +6,8 @@ function envio_email() {
         # VARS: plantilla ($4)
           # Plantilla #1 --> Inicial
           # Plantilla #2 --> Cambio contraseña
-          # Plantilla #3 --> Nuevo servicio
+          # Plantilla #3 --> Nuevo servicio (WP)
+          # Plantilla #4 --> Nuevo servicio (PS)
         # VARS: Servicio nuevo ($5):
           # blog --> WP
           # tienda --> PS
@@ -75,5 +76,28 @@ curl --request POST \
      "templateId": 3
 }
 ' 
+     elif [[ ${plantilla} = 4 ]]; then
+curl --request POST \
+     --url https://api.sendinblue.com/v3/smtp/email \
+     --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' \
+     --header "api-key: "$global_sib_api_key"" \
+     --data '
+{
+     "to": [
+          {
+               "email": "'"$3"'"
+          }
+     ],
+     "params": {
+          "SUBS_USERNAME": "'"$1"'",
+          "SUBS_PASSWORD": "'"$2"'",
+          "SUBS_HOST": "'"$1"'",
+          "SUBS_SERVICE": "'"$5"'",
+          "SUBS_BASE_DOMAIN": "'"$global_base_domain"'"
+     },
+     "templateId": 4
+}
+'     
 fi
 }
