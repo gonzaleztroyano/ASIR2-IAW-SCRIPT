@@ -42,8 +42,12 @@ function add_app() {
 
         cert_creation "blog.${usuario_a_listar_apps}"
         
-            destination="/root/app_list/${usuario_a_listar_apps}"
+        destination="/root/app_list/${usuario_a_listar_apps}"
+        if [[ ${apps_instaladas:0:1} = 1 ]]; then # PS ya está instalado
+            echo "111" > ${destination}
+        else # WP no instalado
             echo "011" > ${destination}
+        fi
 
         read -p "Indique el correo electrónico del cliente: " correo_cliente
         mail_regex="^[a-zA-Z0-9_-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
@@ -57,6 +61,17 @@ function add_app() {
         echo "Se ha instalado correctamente la aplicación WordPress para el usuario ${usuario_a_listar_apps}"
         read -p "Pulse cualquier tecla para continuar" caca
         menu
+    fi
+
+    if [[ $app_a_instalar = 2 ]]; then
+        install_prestashop ${usuario_a_listar_apps}
+
+        destination="/root/app_list/${usuario_a_listar_apps}"
+        if [[ ${apps_instaladas:1:1} = 1 ]]; then # WP ya está instalado
+            echo "111" > ${destination}
+        else # WP no instalado
+            echo "101" > ${destination}
+        fi
     fi
 
 

@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+    ServerAdmin admin@localhost
+    ServerName tienda.USER-TO-CHANGE.GLOBAL-BASE-DOMAIN
+    DocumentRoot /var/www/USER-TO-CHANGE/tienda
+
+    <Directory /var/www/USER-TO-CHANGE/tienda>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/apache2/USER-TO-CHANGE.GLOBAL-BASE-DOMAIN-tienda.log
+    CustomLog /var/log/apache2/USER-TO-CHANGE.GLOBAL-BASE-DOMAIN-tienda-access.log combined
+    AssignUserID USER-TO-CHANGE USER-TO-CHANGE
+
+</VirtualHost>
