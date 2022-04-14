@@ -10,7 +10,6 @@ function crear_wp(){
     # Crear usuario, base de datos, permisos
         mysql -e "CREATE DATABASE wp_$1;"
         mysql -e "CREATE USER '$1'@localhost IDENTIFIED BY '$2';"
-
         mysql -e "GRANT ALL PRIVILEGES ON wp_$1.* TO '$1'@'localhost';"
     
     #Logging files: touch, link and permissions
@@ -22,7 +21,6 @@ function crear_wp(){
         chmod 644 /var/log/apache2/blog.$1.$global_base_domain-access.log
 
         ln /var/log/apache2/blog.$1.$global_base_domain.log /var/www/$1/ficheros/logs/blog.$1.$global_base_domain.log
-
         ln /var/log/apache2/blog.$1.$global_base_domain-access.log /var/www/$1/ficheros/logs/blog.$1.$global_base_domain-access.log
 
     # Crear Virtualhost y activar sitio
@@ -36,12 +34,15 @@ function crear_wp(){
         sudo systemctl restart apache2
 
     # Descargar WP y extraer a tmp
-        curl https://wordpress.org/latest.tar.gz --output /tmp/latest.tar.gz
-        mkdir /tmp/wordpress &> /dev/null 
-        tar xzf /tmp/latest.tar.gz -C /tmp/wordpress
-    
+        if [[ ! -f /tmp/latest.tar.gz ]]; then
+            curl https://wordpress.org/latest.tar.gz --output /tmp/latest.tar.gz
+            if [[  ! -d /tmp/wordpress ]]; then
+                mkdir /tmp/wordpress &> /dev/null 
+                tar xzf /tmp/latest.tar.gz -C /tmp/wordpress            
+            fi
+        fi
     # Mover archivos y configurar permisos. Limiar temporales
-        mv /tmp/wordpress/wordpress/* /var/www/$1/blog/
+        cp /tmp/wordpress/wordpress/* /var/www/$1/blog/
         chmod -R 770 /var/www/$1/blog
         chown -R $1:$1 /var/www/$1/blog
         rm -Rf /tmp/wordpress
