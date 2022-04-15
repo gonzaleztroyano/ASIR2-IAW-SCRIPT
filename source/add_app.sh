@@ -22,14 +22,14 @@ function add_app() {
     read -p " Indique aplicación a instalar [1/2]: " app_a_instalar
     
     if [[ ${apps_instaladas:1:1} = 1 ]] && [[ ${app_a_instalar} = 1 ]]; then
-        echo -e "\033[1mERROR:\033[0m WordPress ya está instalada para el usuario"
-        read "Pulse cualquier tecla para volver al menú..."
+        echo -e "\n\033[1mERROR:\033[0m WordPress ya está instalada para el usuario ${usuario_a_listar_apps}"
+        read -p "Pulse cualquier tecla para volver al menú..." trash
         menu
     fi
 
     if [[ ${apps_instaladas:0:1} = 1 ]] && [[ ${app_a_instalar} = 2 ]]; then
-        echo -e "\033[1mERROR:\033[0m PrestaShop ya está instalada para el usuario"
-        read "Pulse cualquier tecla para volver al menú..."
+        echo -e "\n\033[1mERROR:\033[0m PrestaShop ya está instalada para el usuario ${usuario_a_listar_apps}"
+        read -p "Pulse cualquier tecla para volver al menú..." trash
         menu
     fi
 
@@ -43,7 +43,7 @@ function add_app() {
         cert_creation "blog.${usuario_a_listar_apps}"
         
         destination="/root/app_list/${usuario_a_listar_apps}"
-        if [[ ${apps_instaladas:0:1} = 1 ]]; then # PS ya está instalado
+        if [[ ${apps_instaladas:1:1} = 1 ]]; then # PS ya está instalado
             echo "111" > ${destination}
         else # WP no instalado
             echo "011" > ${destination}
@@ -72,6 +72,12 @@ function add_app() {
         else # WP no instalado
             echo "101" > ${destination}
         fi
+    fi
+
+    if [[ ${app_a_instalar} != 1 ]] || [[ ${app_a_instalar} != 1 ]]; then 
+        echo -e "\n\033[1mERROR:\033[0m Opción no válida"
+        read -p "Pulse cualquier tecla para volver al menú..." trash
+        menu
     fi
 
 
