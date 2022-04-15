@@ -42,7 +42,7 @@ function crear_wp(){
             fi
         fi
     # Mover archivos y configurar permisos. Limiar temporales
-        cp /tmp/wordpress/wordpress/* /var/www/${1}/blog/
+        cp -r /tmp/wordpress/wordpress/* /var/www/${1}/blog/
         chmod -R 770 /var/www/${1}/blog
         chown -R ${1}:${1} /var/www/${1}/blog
         rm -Rf /tmp/wordpress
