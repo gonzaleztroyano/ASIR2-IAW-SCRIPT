@@ -18,6 +18,7 @@ source source/app_list.sh
 source source/show_header.sh
 source source/add_app.sh
 source source/cert_creation.sh
+source source/install_prestashop.sh
 
 if [ "${EUID}" -ne 0 ]
   then echo "Este script de gestión solo puede ser ejecutado por el usuario root"
