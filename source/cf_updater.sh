@@ -16,7 +16,7 @@ function cf_updater(){
 
         echo -e "Comprobando la resulución del dominio ${user_subdomain}.${global_base_domain}\n Por favor, espera..."
         sleep 5
-        ip_resultado=$(dig A ${user_subdomain}.${global_base_domain} +short)
+        ip_resultado=$(dig A ${user_subdomain}.${global_base_domain} +short @1.1.1.1)
 
         if [[ ${ip_resultado} = ${ip_equipo} ]]; then
 
@@ -34,7 +34,7 @@ function cf_updater(){
 
         echo -e "Comprobando la resulución del dominio ${service_subdomain}.${user_subdomain}.${global_base_domain}\n Por favor, espera..."
         sleep 5
-        ip_resultado=$(dig A ${service_subdomain}.${user_subdomain}.${global_base_domain} +short)
+        ip_resultado=$(dig A ${service_subdomain}.${user_subdomain}.${global_base_domain} +short @1.1.1.1)
 
         if [[ ${ip_resultado} = ${ip_equipo} ]]; then
             echo -e "¡Excelente! El registro creado es válido\n"
