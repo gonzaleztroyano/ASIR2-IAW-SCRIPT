@@ -15,7 +15,8 @@ function add_app() {
         menu
     else
         app_list tabla ${usuario_a_listar_apps}
-        apps_instaladas=$?
+        apps_instaladas=${bin_apps} #40
+
     fi
 
     echo -e "\n ¿Qué aplicación desea instalar?\n     1. Instalar WordPress\n     2. Instalar PrestaShop"

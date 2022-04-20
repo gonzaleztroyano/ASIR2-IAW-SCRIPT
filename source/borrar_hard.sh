@@ -14,11 +14,16 @@ function borrar_hard () {
         a2dissite ${usuario_a_borrar}-le-ssl.conf > /dev/null
         a2dissite wp_${usuario_a_borrar}.conf > /dev/null
         a2dissite wp_${usuario_a_borrar}-le-ssl.conf > /dev/null
+        a2dissite tienda_${usuario_a_borrar}.conf > /dev/null
+        a2dissite tienda_${usuario_a_borrar}-le-ssl.conf > /dev/null
         mysql -e "REVOKE ALL PRIVILEGES ON wp_${usuario_a_borrar}.* FROM ${usuario_a_borrar};"
+        mysql -e "REVOKE ALL PRIVILEGES ON ${usuario_a_borrar}_tienda.* FROM ${usuario_a_borrar}_tienda'@'localhost';"
         systemctl reload apache2 > /dev/null
         rm -Rf /var/www/${usuario_a_borrar}
         mysql -e "DROP DATABASE IF EXISTS wp_${usuario_a_borrar};"
-
+        mysql -e "DROP DATABASE IF EXISTS ${usuario_a_borrar}_tienda;'"
+        mysql -e "DROP USER IF EXISTS ${usuario_a_borrar}_tienda;" 
+        mysql -e "DROP USER IF EXISTS ${usuario_a_borrar};"
         echo "${usuario_a_borrar} y sus sitios han sido eliminados."
         read -p "Pulse intro para volver al menú"
         menu

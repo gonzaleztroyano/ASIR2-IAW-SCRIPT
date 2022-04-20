@@ -1,6 +1,7 @@
     # VARS:
         # Usuario en el que configurar app
 function install_prestashop(){ 
+    echo -e "Instalando... \nEspere, por favor..."
     usuario=${1}
     mkdir -p /var/www/${usuario}/tienda
     chown ${usuario}:${usuario} /var/www/${usuario}/tienda
@@ -65,7 +66,7 @@ function install_prestashop(){
     echo "La tienda debería estar instalándose..."
     read -p "Pulsar al término de la instalación " trash
 
-    rm -rf /var/www/ocitest141/tienda/install/
+    rm -rf /var/www/${usuario}/tienda/install/
 
     mail_regex="^[a-zA-Z0-9_-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,12}$"
     until [[ ${correo_cliente} =~ ${mail_regex} ]];

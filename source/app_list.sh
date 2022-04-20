@@ -91,7 +91,7 @@ function app_list() {
                 echo "|==================================================|"
                 echo ""
                 if [[ ${1} = "tabla" ]]; then
-                    return "${bin_apps}"
+                    export bin_apps
                 fi
             echo -e "\n \n Volver al menú..."
             read
