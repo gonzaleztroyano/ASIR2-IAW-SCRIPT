@@ -7,7 +7,7 @@ function listar() {
         echo ""
         read -p "¿Desea buscar algún nombre de usuario en concreto? [s/N]: " buscar_usuario_filtro
 
-        if [ ${buscar_usuario_filtro} = "s" ]; then
+        if [[ ${buscar_usuario_filtro} = "s" ]]; then
 
             read -p "Introduzca el término a buscar: " buscar_usuario_filtro_termino
             echo -e "Estos son los usuarios que coinciden con el término indicado: \n " 
