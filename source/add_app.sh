@@ -5,7 +5,8 @@ function add_app() {
         cat /etc/passwd | grep '/var/www' | cut -d ':' -f 1
         echo -e "\n -- FIN DE LA LISTA -- \n \n"
     
-    read -p "Indicar el usuario sobre el que se desea listar las aplicaciones instaladas: " usuario_a_listar_apps
+    read -p "Indicar el usuario para el que desea añadir una nueva aplicación: " usuario_a_listar_apps
+
     
     check_usuario_existe=$(cat /etc/passwd | grep "/var/www" | cut -d ":" -f 1 | grep -w ${usuario_a_listar_apps})
     if [[ ${check_usuario_existe} != ${usuario_a_listar_apps} ]]; then
